@@ -1,0 +1,33 @@
+@layer base {
+  [data-theme="surdo"] {
+    color-scheme: light;
+
+    --white: oklch(100% 0 0);
+    --black: oklch(0% 0 0);
+
+    /* orange */
+    --orange-50: #FFF8F3;
+    --orange-100: #FFF0E6;
+    --orange-200: #FFD9B8;
+    --orange-300: #FFBB86;
+    --orange-400: #F89150;
+    --orange-500: #EF6424;
+    --orange-600: #CC4D10;
+    --orange-700: #A83A0A;
+    --orange-800: #832B07;
+    --orange-900: #5A1B04;
+
+    /* fonts */
+    --font-heading: var(--font-marmelad), sans-serif;
+    --font-body: var(--font-pt-sans), sans-serif;
+
+    /* text */
+    --foreground: var(--color-zinc-900);
+
+    --background: var(--white);
+
+    /* accent */
+    --accent: var(--orange-500);
+    --accent-foreground: var(--white);
+  }
+}
