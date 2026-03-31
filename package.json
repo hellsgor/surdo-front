@@ -3,23 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "yarn codegen || true",
     "dev": "next dev",
+    "prebuild": "yarn codegen",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@solar-icons/react": "^1.1.0",
+    "graphql": "^16.13.2",
+    "modern-normalize": "^3.0.1",
     "next": "16.2.1",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^6.2.1",
+    "@graphql-codegen/typescript": "^5.0.9",
+    "@graphql-codegen/typescript-operations": "^5.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "sass": "^1.98.0",
     "typescript": "^5"
   }
 }

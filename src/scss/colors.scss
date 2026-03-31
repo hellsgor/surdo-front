@@ -1,0 +1,29 @@
+:root {
+  --white: #fff;
+  --black: #000;
+
+  /* orange */
+  --orange-50: #fff8f3;
+  --orange-100: #fff0e6;
+  --orange-200: #ffd9b8;
+  --orange-300: #ffbb86;
+  --orange-400: #f89150;
+  --orange-500: #ef6424;
+  --orange-600: #cc4d10;
+  --orange-700: #a83a0a;
+  --orange-800: #832b07;
+  --orange-900: #5a1b04;
+
+  /* fonts */
+  --font-heading: var(--font-marmelad), sans-serif;
+  --font-body: var(--font-pt-sans), sans-serif;
+
+  /* text */
+  --foreground: #18181b;
+
+  --background: var(--white);
+
+  /* accent */
+  --accent: var(--orange-500);
+  --accent-foreground: var(--white);
+}
