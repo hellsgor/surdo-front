@@ -1,9 +1,22 @@
-/* Desktop (1440px) → Mobile (375px) via clamp() */
+@use './vars' as v;
+@use './functions' as *;
+@use './mixins' as *;
 
 body {
   font-family: var(--font-body);
-  font-size: clamp(1rem, calc(0.956rem + 0.19vw), 1.125rem); /* 16px → 18px */
   line-height: 1.55;
+
+  @include m-only {
+    font-size: mvw(16px);
+  }
+
+  @include bp-from(v.$br-tab) {
+    font-size: dvw(18px);
+  }
+
+  @include d-only {
+    font-size: 18px;
+  }
 }
 
 p, li, label {
@@ -11,31 +24,102 @@ p, li, label {
   line-height: inherit;
 }
 
-button, input, textarea, select {
-  font-family: var(--font-body);
-  font-size: inherit;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
 h1 {
-  font-size: clamp(2.25rem, calc(1.458rem + 3.38vw), 4.5rem); /* 36px → 72px */
   line-height: 1;
+
+  @include m-only {
+    font-size: mvw(36px);
+  }
+
+  @include bp-from(v.$br-tab) {
+    font-size: dvw(72px);
+  }
+
+  @include d-only {
+    font-size: 72px;
+  }
 }
 
 h2 {
-  font-size: clamp(1.875rem, calc(1.215rem + 2.82vw), 3.75rem); /* 30px → 60px */
   line-height: 1;
+
+  @include m-only {
+    font-size: mvw(30px);
+  }
+
+  @include bp-from(v.$br-tab) {
+    font-size: dvw(60px);
+  }
+
+  @include d-only {
+    font-size: 60px;
+  }
+}
+
+h3 {
+  line-height: 1;
+
+  @include m-only {
+    font-size: mvw(26px);
+  }
+
+  @include bp-from(v.$br-tab) {
+    font-size: dvw(48px);
+  }
+
+  @include d-only {
+    font-size: 48px;
+  }
 }
 
 h4 {
-  font-size: clamp(1.375rem, calc(1.067rem + 1.32vw), 2.25rem); /* 22px → 36px */
   line-height: 1.11;
+
+  @include m-only {
+    font-size: mvw(22px);
+  }
+
+  @include bp-from(v.$br-tab) {
+    font-size: dvw(36px);
+  }
+
+  @include d-only {
+    font-size: 36px;
+  }
 }
 
 h5 {
-  font-size: clamp(1.125rem, calc(0.993rem + 0.56vw), 1.5rem); /* 18px → 24px */
   line-height: 1.33;
+
+  @include m-only {
+    font-size: mvw(18px);
+  }
+
+  @include bp-from(v.$br-tab) {
+    font-size: dvw(24px);
+  }
+
+  @include d-only {
+    font-size: 24px;
+  }
+}
+
+h6 {
+  line-height: 1.33;
+
+  @include m-only {
+    font-size: mvw(16px);
+  }
+
+  @include bp-from(v.$br-tab) {
+    font-size: dvw(18px);
+  }
+
+  @include d-only {
+    font-size: 18px;
+  }
 }

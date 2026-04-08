@@ -1,0 +1,56 @@
+@use 'sass:list';
+@use 'sass:meta';
+@use './vars' as v;
+@use './functions' as *;
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin active {
+  @media (hover: hover) and (pointer: fine) {
+    &:active {
+      @content;
+    }
+  }
+}
+
+@mixin bp-from($type) {
+  @media (min-width: $type) {
+    @content;
+  }
+}
+
+@mixin bp-till($type) {
+  @media (max-width: ($type - 1)) {
+    @content;
+  }
+}
+
+@mixin bp-between($type-from, $type-to) {
+  @media (min-width: $type-from) and (max-width: ($type-to - 1)) {
+    @content;
+  }
+}
+
+@mixin m-only {
+  @media (max-width: (v.$br-tab - 1)) {
+    @content;
+  }
+}
+
+@mixin tab-only {
+  @media (min-width: v.$br-tab) and (max-width: (v.$br-desk - 1)) {
+    @content;
+  }
+}
+
+@mixin d-only {
+  @media (min-width: v.$br-desk) {
+    @content;
+  }
+}
