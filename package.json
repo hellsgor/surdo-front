@@ -8,11 +8,13 @@
     "prebuild": "yarn codegen",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint && stylelint \"src/**/*.scss\"",
+    "lint:styles": "stylelint \"src/**/*.scss\"",
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@solar-icons/react": "^1.1.0",
+    "clsx": "^2.1.1",
     "graphql": "^16.13.2",
     "modern-normalize": "^3.0.1",
     "next": "16.2.1",
@@ -30,6 +32,10 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "sass": "^1.98.0",
+    "stylelint": "^17.7.0",
+    "stylelint-config-clean-order": "^8.0.1",
+    "stylelint-config-recommended-scss": "^17.0.1",
+    "stylelint-order": "^8.1.1",
     "typescript": "^5"
   }
 }

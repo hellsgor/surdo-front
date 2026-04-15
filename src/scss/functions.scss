@@ -25,6 +25,10 @@
   @return vw($values, unitless(v.$res-mob));
 }
 
+@function tvw($values) {
+  @return vw($values, unitless(v.$res-tab));
+}
+
 @function dvw($values) {
   @return vw($values, unitless(v.$res-desk));
 }

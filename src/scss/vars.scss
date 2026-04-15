@@ -1,6 +1,19 @@
 $res-desk: 1440px;
+$res-tab: 1024px;
 $res-mob: 375px;
 
 $br-mob: 375px;
 $br-tab: 768px;
 $br-desk: 1440px;
+
+// easings
+$ease-out: cubic-bezier(0, 0, 0.4, 1);
+$ease-in: cubic-bezier(0.6, 0, 1, 1);
+$ease-in-out: cubic-bezier(0.6, 0, 0.4, 1);
+
+// transitions
+$transition-timing-fast: 0.2s $ease-in-out;
+$transition-timing: 0.3s $ease-in-out;
+$transition-timing-400: 0.4s $ease-in-out;
+$transition-timing-500: 0.5s $ease-in-out;
+$transition-timing-700: 0.7s $ease-in-out;

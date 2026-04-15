@@ -1,13 +1,8 @@
-import { getGlobalData } from '@/services/graphql/getters/getGlobalData';
 import { getMainPageData } from '@/services/graphql/getters/getMainPageData';
 
 export default async function Home() {
-  const [{ globalData }, { homePage }] = await Promise.all([
-    getGlobalData(),
-    getMainPageData(),
-  ]);
+  const { homePage } = await getMainPageData();
 
-  console.log('globalData:', globalData);
   console.log('homePage:', homePage);
 
   return (

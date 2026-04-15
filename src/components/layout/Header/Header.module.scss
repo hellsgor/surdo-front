@@ -1,0 +1,313 @@
+@use '../../../scss/vars' as v;
+@use '../../../scss/mixins' as *;
+@use '../../../scss/functions' as *;
+
+// ─── Drawer animations ───────────────────────────────────────────────────────
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+// ─── Shell ──────────────────────────────────────────────────────────────────
+
+.header {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  transform: translateY(0);
+
+  height: 64px;
+
+  background-color: var(--white);
+
+  transition: transform v.$transition-timing;
+
+  @include tab-only {
+    height: tvw(64px);
+  }
+
+  @include m-only {
+    background-color: transparent;
+  }
+}
+
+.hidden {
+  transform: translateY(-100%);
+
+  @include m-only {
+    transform: translateY(0);
+  }
+}
+
+// ─── Inner container ────────────────────────────────────────────────────────
+
+.inner {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 14px;
+
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  @include tab-only {
+    gap: tvw(24px);
+    border-bottom-right-radius: tvw(14px);
+    border-bottom-left-radius: tvw(14px);
+  }
+
+  @include m-only {
+    gap: mvw(16px);
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+// ─── Logo ───────────────────────────────────────────────────────────────────
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+
+  @include m-only {
+    padding: mvw(8px);
+  }
+}
+
+// ─── Desktop nav ────────────────────────────────────────────────────────────
+
+.nav {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+
+  @include m-only {
+    display: none;
+  }
+}
+
+.navLeft,
+.navRight {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+// ─── Nav item ────────────────────────────────────────────────────────────────
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  padding: 8px 12px;
+
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  @include tab-only {
+    padding: tvw(8px) tvw(12px);
+  }
+}
+
+// ─── Dropdown ───────────────────────────────────────────────────────────────
+
+.dropdown {
+  pointer-events: none;
+
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+
+  min-width: 240px;
+  padding: 8px 0 0;
+
+  opacity: 0;
+
+  transition: opacity v.$transition-timing-fast;
+}
+
+.navItem:hover .dropdown,
+.navItem:focus-within .dropdown {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+ul.dropdownList {
+  padding: 4px;
+  border-radius: 8px;
+  background-color: var(--white);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+a.dropdownLink {
+  justify-content: flex-start;
+  padding: 10px 16px;
+
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+// ─── Burger button ──────────────────────────────────────────────────────────
+
+.burgerButton {
+  cursor: pointer;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+
+  color: var(--foreground);
+
+  background-color: transparent;
+
+  @include hover {
+    color: var(--accent);
+  }
+
+  @include m-only {
+    display: flex;
+  }
+}
+
+// ─── Mobile drawer ──────────────────────────────────────────────────────────
+
+.mobileDialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: auto;
+
+  overflow-y: auto;
+
+  width: min(80vw, mvw(320px));
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  background-color: var(--white);
+  outline: none;
+
+  &[open] {
+    animation: slideInRight v.$transition-timing-400 forwards;
+  }
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.mobileDialogClosing {
+  animation: slideOutRight v.$transition-timing-400 forwards !important;
+}
+
+// ─── Close button ───────────────────────────────────────────────────────────
+
+.closeButton {
+  cursor: pointer;
+
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+
+  color: var(--foreground);
+
+  background-color: transparent;
+
+  @include hover {
+    color: var(--accent);
+  }
+}
+
+// ─── Mobile nav ─────────────────────────────────────────────────────────────
+
+.mobileNav {
+  padding: 64px 0 8px;
+}
+
+.mobileNavList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a.mobileNavLink {
+  justify-content: flex-start;
+  width: 100%;
+  padding: 12px 20px;
+  white-space: normal;
+
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.mobileNavChildren {
+  margin: 0;
+  padding: 0 0 4px;
+  list-style: none;
+}
+
+a.mobileNavChildLink {
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 20px 10px 36px;
+  white-space: normal;
+
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}

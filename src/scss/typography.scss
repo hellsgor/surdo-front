@@ -4,122 +4,109 @@
 
 body {
   font-family: var(--font-body);
+  font-size: 18px;
   line-height: 1.55;
+
+  @include tab-only {
+    font-size: tvw(18px);
+  }
 
   @include m-only {
     font-size: mvw(16px);
   }
-
-  @include bp-from(v.$br-tab) {
-    font-size: dvw(18px);
-  }
-
-  @include d-only {
-    font-size: 18px;
-  }
 }
 
-p, li, label {
+p,
+li,
+label {
   font-size: inherit;
   line-height: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
+  text-wrap: balance;
 }
 
 h1 {
+  font-size: 72px;
   line-height: 1;
+
+  @include tab-only {
+    font-size: tvw(72px);
+  }
 
   @include m-only {
     font-size: mvw(36px);
   }
-
-  @include bp-from(v.$br-tab) {
-    font-size: dvw(72px);
-  }
-
-  @include d-only {
-    font-size: 72px;
-  }
 }
 
 h2 {
+  font-size: 60px;
   line-height: 1;
+
+  @include tab-only {
+    font-size: tvw(60px);
+  }
 
   @include m-only {
     font-size: mvw(30px);
   }
-
-  @include bp-from(v.$br-tab) {
-    font-size: dvw(60px);
-  }
-
-  @include d-only {
-    font-size: 60px;
-  }
 }
 
 h3 {
+  font-size: 48px;
   line-height: 1;
+
+  @include tab-only {
+    font-size: tvw(48px);
+  }
 
   @include m-only {
     font-size: mvw(26px);
   }
-
-  @include bp-from(v.$br-tab) {
-    font-size: dvw(48px);
-  }
-
-  @include d-only {
-    font-size: 48px;
-  }
 }
 
 h4 {
+  font-size: 36px;
   line-height: 1.11;
+
+  @include tab-only {
+    font-size: tvw(36px);
+  }
 
   @include m-only {
     font-size: mvw(22px);
   }
-
-  @include bp-from(v.$br-tab) {
-    font-size: dvw(36px);
-  }
-
-  @include d-only {
-    font-size: 36px;
-  }
 }
 
 h5 {
+  font-size: 24px;
   line-height: 1.33;
+
+  @include tab-only {
+    font-size: tvw(24px);
+  }
 
   @include m-only {
     font-size: mvw(18px);
   }
-
-  @include bp-from(v.$br-tab) {
-    font-size: dvw(24px);
-  }
-
-  @include d-only {
-    font-size: 24px;
-  }
 }
 
 h6 {
+  font-size: 18px;
   line-height: 1.33;
+
+  @include tab-only {
+    font-size: tvw(18px);
+  }
 
   @include m-only {
     font-size: mvw(16px);
-  }
-
-  @include bp-from(v.$br-tab) {
-    font-size: dvw(18px);
-  }
-
-  @include d-only {
-    font-size: 18px;
   }
 }

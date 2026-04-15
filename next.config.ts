@@ -1,8 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+  allowedDevOrigins: ['192.168.68.*'],
+  images: {
+    dangerouslyAllowLocalIP: true,
+    remotePatterns: [
+      new URL('http://localhost:1337/**'),
+      new URL('https://cms.surdo-logoped.ru/**'),
+    ],
+  },
 };
 
 export default nextConfig;
