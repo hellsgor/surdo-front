@@ -34,8 +34,6 @@
 
   height: 64px;
 
-  background-color: var(--white);
-
   transition: transform v.$transition-timing;
 
   @include tab-only {
@@ -67,6 +65,7 @@
   border-bottom-right-radius: 14px;
   border-bottom-left-radius: 14px;
 
+  background-color: var(--white);
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -80,6 +79,7 @@
   @include m-only {
     gap: mvw(16px);
     border-radius: 0;
+    background-color: transparent;
     box-shadow: none;
   }
 }

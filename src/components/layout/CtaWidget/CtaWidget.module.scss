@@ -5,18 +5,8 @@
 .section {
   position: relative;
   overflow: clip;
-  padding-top: 240px;
-  padding-bottom: 80px;
-
-  @include tab-only {
-    padding-top: tvw(208px);
-    padding-bottom: tvw(80px);
-  }
-
-  @include m-only {
-    padding-top: mvw(540px);
-    padding-bottom: 0;
-  }
+  @include fluid(padding-top, 400px, 540, 300px);
+  @include fluid(padding-bottom, 80px, 0);
 }
 
 .backgrounds {

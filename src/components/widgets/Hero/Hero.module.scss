@@ -1,0 +1,121 @@
+@use '../../../scss/mixins' as *;
+@use '../../../scss/functions' as *;
+
+.section {
+  overflow: visible;
+  overflow-x: clip;
+  height: 100vh;
+  @include fluid(padding-top, 342px, 198px, 198px);
+  @include fluid(min-height, 900px, 700px);
+
+  @include m-only {
+    display: flex;
+    align-items: center;
+    height: mvw(700px);
+    padding-top: inherit;
+  }
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  translate: -50% 0;
+
+  max-width: 1982px;
+  height: auto;
+  max-height: 100vh;
+
+  @include fluid(top, -108px, -70px);
+
+  @media (min-width: 1920px) {
+    min-width: 110%;
+  }
+
+  @include m-only {
+    height: 100vh;
+  }
+}
+
+.wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  min-width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  @include fluid(max-width, 680px);
+  @include fluid(row-gap, 40px);
+  @include fluid(padding-bottom, 160px);
+
+  @include m-only {
+    max-width: 100%;
+    padding-bottom: unset;
+  }
+}
+
+.photoWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.protoWrapper {
+  position: absolute;
+  @include fluid(top, -156px, 0, -50px);
+  @include fluid(right, 0, 0, -80px);
+  @include fluid(width, 680px, 680px, 500px);
+
+  @include m-only {
+    display: none;
+  }
+}
+
+.circle {
+  position: relative;
+
+  overflow: clip;
+
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    180deg,
+    var(--orange-500) 0%,
+    var(--orange-600) 100%
+  );
+  mix-blend-mode: multiply;
+}
+
+img.photo,
+img.roundedPhoto {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  @include fluid(width, 552px, 552px, 406px);
+  @include fluid(height, 829px, 829px, 610px);
+}
+
+img.roundedPhoto {
+  bottom: 0;
+}
+
+img.photo {
+  z-index: 1;
+  top: -149px;
+  clip-path: inset(0 0 calc(100% - 300px) 0);
+
+  @include tab-only {
+    top: tvw(-109px);
+    clip-path: inset(0 0 calc(100% - tvw(300px)) 0);
+  }
+
+  @include m-only {
+    clip-path: inset(0 0 calc(100% - mvw(300px)) 0);
+  }
+}

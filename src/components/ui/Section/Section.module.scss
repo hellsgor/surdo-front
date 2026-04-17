@@ -1,0 +1,6 @@
+@use '../../../scss/mixins' as *;
+
+.section {
+  position: relative;
+  @include fluid(padding-block, 80px);
+}

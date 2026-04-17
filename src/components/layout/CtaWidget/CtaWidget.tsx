@@ -11,7 +11,7 @@ type Props = {
 
 export function CtaWidget({ cta }: Props) {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="contacts">
       <div className={styles.backgrounds} aria-hidden>
         <div className={styles.bg1} />
         <div className={styles.bg3} />
@@ -24,7 +24,6 @@ export function CtaWidget({ cta }: Props) {
               alt={cta.image.alt ?? ''}
               fill
               sizes="(max-width: 767px) 100vw, (max-width: 1439px) 47vw, 512px"
-              quality={90}
             />
           </div>
         )}

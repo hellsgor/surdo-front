@@ -31,8 +31,13 @@ export function Button({ variant = 'primary', wide, children, className, leftTex
 
   if (props.href !== undefined) {
     const { href, ...rest } = props as AsLink;
+    const isAnchor = href.startsWith('#');
     const isExternal = href.startsWith('http://') || href.startsWith('https://');
-    buttonEl = (
+    buttonEl = isAnchor ? (
+      <a href={href} className={cls} {...rest}>
+        {children}
+      </a>
+    ) : (
       <Link
         href={href}
         className={cls}

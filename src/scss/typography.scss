@@ -4,16 +4,8 @@
 
 body {
   font-family: var(--font-body);
-  font-size: 18px;
   line-height: 1.55;
-
-  @include tab-only {
-    font-size: tvw(18px);
-  }
-
-  @include m-only {
-    font-size: mvw(16px);
-  }
+  @include fluid(font-size, 18px, 16px);
 }
 
 p,
@@ -34,79 +26,68 @@ h6 {
 }
 
 h1 {
-  font-size: 72px;
+  font-weight: 400;
   line-height: 1;
-
-  @include tab-only {
-    font-size: tvw(72px);
-  }
-
-  @include m-only {
-    font-size: mvw(36px);
-  }
+  @include fluid(font-size, 72px, 36px);
 }
 
 h2 {
-  font-size: 60px;
   line-height: 1;
-
-  @include tab-only {
-    font-size: tvw(60px);
-  }
-
-  @include m-only {
-    font-size: mvw(30px);
-  }
+  @include fluid(font-size, 60px, 30px);
 }
 
 h3 {
-  font-size: 48px;
   line-height: 1;
-
-  @include tab-only {
-    font-size: tvw(48px);
-  }
-
-  @include m-only {
-    font-size: mvw(26px);
-  }
+  @include fluid(font-size, 48px, 26px);
 }
 
 h4 {
-  font-size: 36px;
   line-height: 1.11;
-
-  @include tab-only {
-    font-size: tvw(36px);
-  }
-
-  @include m-only {
-    font-size: mvw(22px);
-  }
+  @include fluid(font-size, 36px, 22px);
 }
 
 h5 {
-  font-size: 24px;
   line-height: 1.33;
-
-  @include tab-only {
-    font-size: tvw(24px);
-  }
-
-  @include m-only {
-    font-size: mvw(18px);
-  }
+  @include fluid(font-size, 24px, 18px);
 }
 
 h6 {
-  font-size: 18px;
   line-height: 1.33;
+  @include fluid(font-size, 18px, 16px);
+}
 
-  @include tab-only {
-    font-size: tvw(18px);
-  }
+span.colored {
+  color: var(--orange-500);
+}
 
-  @include m-only {
-    font-size: mvw(16px);
+ul[role='marked'] {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  @include fluid(row-gap, 4px);
+
+  li {
+    position: relative;
+    @include fluid(padding-left, 8px);
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      left: 0;
+
+      display: block;
+
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+
+      background-color: var(--orange-500);
+      @include fluid(top, 13px);
+      @include fluid(width, 4px);
+    }
   }
 }
