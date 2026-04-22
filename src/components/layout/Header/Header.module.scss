@@ -32,7 +32,7 @@
   top: 0;
   transform: translateY(0);
 
-  height: 64px;
+  height: rem(64px);
 
   transition: transform v.$transition-timing;
 
@@ -57,13 +57,13 @@
 
 .inner {
   display: flex;
-  gap: 24px;
+  gap: rem(24px);
   align-items: center;
   justify-content: space-between;
 
   height: 100%;
-  border-bottom-right-radius: 14px;
-  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: rem(14px);
+  border-bottom-left-radius: rem(14px);
 
   background-color: var(--white);
   box-shadow:
@@ -112,7 +112,7 @@
 .navLeft,
 .navRight {
   display: flex;
-  gap: 4px;
+  gap: rem(4px);
   align-items: center;
 
   margin: 0;
@@ -128,7 +128,7 @@
 }
 
 .navLink {
-  padding: 8px 12px;
+  padding: rem(8px) rem(12px);
 
   &[aria-disabled='true'] {
     pointer-events: none;
@@ -150,8 +150,8 @@
   top: 100%;
   left: 0;
 
-  min-width: 240px;
-  padding: 8px 0 0;
+  min-width: rem(240px);
+  padding: rem(8px) 0 0;
 
   opacity: 0;
 
@@ -165,8 +165,8 @@
 }
 
 ul.dropdownList {
-  padding: 4px;
-  border-radius: 8px;
+  padding: rem(4px);
+  border-radius: rem(8px);
   background-color: var(--white);
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -175,7 +175,7 @@ ul.dropdownList {
 
 a.dropdownLink {
   justify-content: flex-start;
-  padding: 10px 16px;
+  padding: rem(10px) rem(16px);
 
   &[aria-disabled='true'] {
     pointer-events: none;
@@ -192,9 +192,9 @@ a.dropdownLink {
   align-items: center;
   justify-content: center;
 
-  padding: 8px;
+  padding: rem(8px);
   border: none;
-  border-radius: 8px;
+  border-radius: rem(8px);
 
   color: var(--foreground);
 
@@ -269,6 +269,7 @@ a.dropdownLink {
     color: var(--accent);
   }
 }
+
 
 // ─── Mobile nav ─────────────────────────────────────────────────────────────
 

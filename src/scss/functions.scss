@@ -21,6 +21,10 @@
   }
 }
 
+@function rem($px) {
+  @return math.div(unitless($px), 16) * 1rem;
+}
+
 @function mvw($values) {
   @return vw($values, unitless(v.$res-mob));
 }
@@ -31,4 +35,8 @@
 
 @function dvw($values) {
   @return vw($values, unitless(v.$res-desk));
+}
+
+@function dvw-lg($values) {
+  @return vw($values, unitless(v.$br-desk-max));
 }

@@ -6,7 +6,7 @@
     cursor: pointer;
 
     display: inline-flex;
-    gap: 4px;
+    gap: rem(4px);
     align-items: center;
     justify-content: center;
 
@@ -42,8 +42,8 @@
 .primary,
 .secondary,
 .neutral {
-    padding: 14px 24px;
-    border: 2px solid transparent;
+    padding: rem(14px) rem(24px);
+    border: rem(2px) solid transparent;
     border-radius: 9999px;
 
     @include tab-only {
@@ -61,7 +61,7 @@
 
 .wrapper {
     display: inline-flex;
-    gap: 8px;
+    gap: rem(8px);
     align-items: center;
 }
 

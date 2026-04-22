@@ -4,9 +4,9 @@
 
 .container {
   width: 100%;
-  max-width: v.$br-desk;
+  max-width: rem(v.$br-desk);
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: rem(20px);
 
   @include tab-only {
     padding-inline: tvw(20px);

@@ -1,3 +1,4 @@
+@use '../../../scss/vars' as v;
 @use '../../../scss/mixins' as *;
 @use '../../../scss/functions' as *;
 
@@ -22,18 +23,21 @@
   left: 50%;
   translate: -50% 0;
 
-  max-width: 1982px;
+  min-width: rem(1982px);
   height: auto;
-  max-height: 100vh;
 
   @include fluid(top, -108px, -70px);
 
-  @media (min-width: 1920px) {
+  @include bp-from(v.$br-desk-max) {
     min-width: 110%;
   }
 
+  @include tab-only {
+    min-width: 160%;
+  }
+
   @include m-only {
-    height: 100vh;
+    min-width: 400%;
   }
 }
 
@@ -107,8 +111,8 @@ img.roundedPhoto {
 
 img.photo {
   z-index: 1;
-  top: -149px;
-  clip-path: inset(0 0 calc(100% - 300px) 0);
+  top: rem(-149px);
+  clip-path: inset(0 0 calc(100% - rem(300px)) 0);
 
   @include tab-only {
     top: tvw(-109px);

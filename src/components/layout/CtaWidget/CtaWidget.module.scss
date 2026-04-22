@@ -21,7 +21,7 @@
 
   overflow-y: clip;
 
-  max-width: 1400px;
+  max-width: rem(1400px);
 
   @include tab-only {
     max-width: tvw(1400px);
@@ -46,11 +46,11 @@
 
 .bg1 {
   z-index: 1;
-  bottom: -71px;
+  bottom: rem(-71px);
   translate: -41.6% 0;
 
   aspect-ratio: 3534 / 652;
-  width: 3524px;
+  width: rem(3524px);
 
   background-image: url('/cta/bg1.svg');
 
@@ -71,11 +71,11 @@
 
 .bg2 {
   z-index: 3;
-  bottom: -68px;
+  bottom: rem(-68px);
   translate: -3% 0;
 
   aspect-ratio: 1348 / 401;
-  width: 1316px;
+  width: rem(1316px);
 
   background-image: url('/cta/bg2.svg');
 
@@ -122,9 +122,9 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: rem(16px);
 
-  max-width: 560px;
+  max-width: rem(560px);
 
   color: var(--white);
 
@@ -142,8 +142,8 @@
 
 .buttons {
   display: flex;
-  gap: 40px;
-  margin-top: 24px;
+  gap: rem(40px);
+  margin-top: rem(24px);
 
   @include tab-only {
     gap: tvw(40px);
@@ -164,11 +164,11 @@
 .photo {
   position: absolute;
   z-index: 2;
-  right: calc(50% - 649px);
-  bottom: 8px;
+  right: calc(50% - rem(649px));
+  bottom: rem(8px);
 
   aspect-ratio: 415 / 622;
-  width: 512px;
+  width: rem(512px);
 
   @include tab-only {
     right: calc(50% - tvw(580px));

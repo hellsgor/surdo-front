@@ -56,7 +56,7 @@
 }
 
 @mixin fluid($property, $desk, $mob: $desk, $tab: $desk) {
-  #{$property}: $desk;
+  #{$property}: rem($desk);
 
   @include tab-only {
     #{$property}: tvw($tab);

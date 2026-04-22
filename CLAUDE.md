@@ -23,8 +23,8 @@
 
 - Акцент: оранжевый `#EF6424`; палитра в `src/scss/colors.scss` (`:root`)
 - Шрифты: PT Sans (текст) + Marmelad (заголовки), `next/font/google` в `layout.tsx`
-- Брейкпоинты: Desktop ≥1025px, Tablet 768–1024px, Mobile <768px (от 375px)
-- Типографика: `clamp()` от 375 до 1440px в `src/scss/typography.scss`
+- Брейкпоинты: Desktop ≥1440px, Tablet 768–1439px, Mobile <768px (от 375px), Wide >1920px
+- Типографика: `fluid()` миксин с `mvw()`/`tvw()`/`rem()` в `src/scss/typography.scss`
 
 ## Структура
 
@@ -40,6 +40,9 @@ src/
     globals.scss   — точка входа
     colors.scss    — CSS-переменные (:root)
     typography.scss— типографика
+    vars.scss      — переменные ($br-desk, $br-desk-max, easings…)
+    functions.scss — rem(), mvw(), tvw(), dvw(), dvw-lg()
+    mixins.scss    — fluid(), tab-only, m-only, hover, bp-from…
   services/
     graphql/
       queries/     — .ts-файлы с gql-запросами (источник для codegen)
@@ -84,4 +87,6 @@ src/
 - Цвета в SCSS — только через `var(--*)` из `colors.scss`. Named colors (`red`, `blue`) запрещены (`color-named: never`). Хардкод-хексы — только в исключительных случаях.
 - Порядок в SCSS-блоке: сначала declarations, потом `@include`/`@media` (enforced через `order/order`).
 - Адаптив — через миксины `@include tab-only`/`m-only` + `tvw()`/`mvw()`, не сырые `@media`.
+- Все десктопные px-значения — только через `rem()` (например `rem(24px)`), не сырые пиксели. Это обеспечивает пропорциональное масштабирование на вьюпортах >1920px.
+- `@include fluid($prop, $desk, $mob, $tab)` — основной миксин для адаптивных свойств; десктопное значение передаётся в px, `rem()` применяется внутри автоматически.
 - `yarn lint` запускает ESLint + stylelint; `yarn codegen` — после изменения gql-запросов.
