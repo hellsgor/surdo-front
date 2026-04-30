@@ -6,12 +6,17 @@ import clsx from 'clsx';
 export function Section({
   children,
   className,
+  sectionName,
 }: {
   children: ReactNode;
   className?: string;
+  sectionName: string;
 }) {
   return (
-    <section className={clsx(styles.section, className)}>
+    <section
+      className={clsx(styles.section, className)}
+      data-section-name={sectionName}
+    >
       <Container>{children}</Container>
     </section>
   );

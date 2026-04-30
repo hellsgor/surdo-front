@@ -1,11 +1,13 @@
 import type { ColoredText } from '@/types/primitives/ColoredText';
 
 /**
- * Заменяет пробелы после коротких слов (1–2 символа) на неразрывные,
+ * Заменяет пробелы после коротких слов (1–3 символа) на неразрывные,
  * чтобы предлоги и союзы не оставались висячими на конце строки.
  */
-export function nobr(text: string): string {
-  return text.replace(/(\s|^)(\S{1,2})\s/g, '$1$2\u00A0');
+export function nobr(text?: string): string {
+  if (!text) return '';
+
+  return text.replace(/(\s|^)(\S{1,3})\s/g, '$1$2\u00A0');
 }
 
 /**
@@ -25,5 +27,5 @@ export function colorize({ text, colored }: ColoredText) {
  * сначала выделяет цветной фрагмент, затем расставляет неразрывные пробелы.
  */
 export function pretty({ text, colored }: ColoredText) {
-  return nobr(colored ? colorize({ text, colored }) : text ?? '');
+  return nobr(colored ? colorize({ text, colored }) : (text ?? ''));
 }

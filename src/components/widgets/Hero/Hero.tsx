@@ -9,10 +9,8 @@ import Image from 'next/image';
 type Props = { data: Hero };
 
 export function Hero({ data }: Props) {
-  console.log(data);
-
   return (
-    <Section className={clsx(styles.section)}>
+    <Section className={clsx(styles.section)} sectionName="hero">
       <Image
         className={styles.bg}
         src="/hero/hero-bg.webp"

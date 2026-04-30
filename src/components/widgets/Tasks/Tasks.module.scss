@@ -1,0 +1,118 @@
+@use '../../../scss/functions' as *;
+@use '../../../scss/mixins' as *;
+@use '../../../scss/vars' as v;
+
+.section {
+  @include bp-till(v.$br-desk) {
+    padding-top: 0;
+  }
+}
+
+.wrapper {
+  display: flex;
+  gap: rem(40);
+  justify-content: space-between;
+
+  @include bp-till(v.$br-desk) {
+    flex-direction: column;
+  }
+
+  @include m-only {
+    row-gap: mvw(24);
+  }
+}
+
+.contentWrapper {
+  position: relative;
+
+  @include tab-only {
+    position: static;
+  }
+}
+
+.content {
+  position: sticky;
+  top: rem(160);
+
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(40);
+  @include fluid(top, 160);
+
+  @include m-only {
+    row-gap: mvw(24);
+  }
+
+  & > h2 {
+    max-width: rem(512);
+
+    @include tab-only {
+      max-width: 50%;
+    }
+
+    @include m-only {
+      max-width: 75%;
+    }
+  }
+
+  & > p {
+    max-width: rem(424);
+
+    @include tab-only {
+      max-width: 50%;
+    }
+
+    @include m-only {
+      max-width: 100%;
+    }
+  }
+}
+
+.tasks {
+  display: grid;
+  grid-template-columns: rem(320) rem(320);
+  gap: rem(40);
+  margin-top: rem(140);
+
+  & > *:nth-child(odd) {
+    grid-column: 1;
+  }
+
+  & > *:nth-child(even) {
+    transform: translateY(rem(-140));
+    grid-column: 2;
+  }
+
+  @include bp-till(v.$br-desk) {
+    margin-top: unset;
+  }
+
+  @include tab-only {
+    grid-template-columns: repeat(3, 1fr);
+
+    & > *:nth-child(odd),
+    & > *:nth-child(even) {
+      transform: none;
+      grid-column: auto;
+    }
+
+    & > *:nth-child(3n + 1) {
+      transform: translateY(tvw(140));
+    }
+
+    & > *:nth-child(3n + 3) {
+      transform: translateY(tvw(-140));
+    }
+  }
+
+  @include m-only {
+    grid-template-columns: 1fr;
+    row-gap: mvw(12);
+
+    & > *:nth-child(odd),
+    & > *:nth-child(even) {
+      transform: none;
+      grid-column: auto;
+    }
+  }
+}

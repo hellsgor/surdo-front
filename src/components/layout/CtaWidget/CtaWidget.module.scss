@@ -19,8 +19,6 @@
   left: 50%;
   translate: -50% 0;
 
-  overflow-y: clip;
-
   max-width: rem(1400px);
 
   @include tab-only {
@@ -62,7 +60,6 @@
 
   @include m-only {
     top: mvw(89px);
-    // bottom: mvw(-71px);
     bottom: unset;
     translate: -31.6%;
     width: mvw(3200px);
@@ -97,7 +94,6 @@
   z-index: 3;
   top: mvw(210px);
   bottom: unset;
-  // translate: -30% 0;
   transform: scaleX(-1) translateX(98%);
 
   aspect-ratio: 1348 / 401;

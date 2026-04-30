@@ -6,13 +6,20 @@
   overflow: visible;
   overflow-x: clip;
   height: 100vh;
+  min-height: dvw(900);
   @include fluid(padding-top, 342px, 198px, 198px);
-  @include fluid(min-height, 900px, 700px);
+
+  @include tab-only {
+    height: auto;
+    min-height: unset;
+  }
 
   @include m-only {
     display: flex;
-    align-items: center;
-    height: mvw(700px);
+    align-items: flex-end;
+
+    height: auto;
+    min-height: 100vh;
     padding-top: inherit;
   }
 }
@@ -56,11 +63,10 @@
   flex-direction: column;
   @include fluid(max-width, 680px);
   @include fluid(row-gap, 40px);
-  @include fluid(padding-bottom, 160px);
+  @include fluid(padding-bottom, 160px, 80px);
 
   @include m-only {
     max-width: 100%;
-    padding-bottom: unset;
   }
 }
 

@@ -1,0 +1,220 @@
+@use '../../../scss/functions' as *;
+@use '../../../scss/mixins' as *;
+@use '../../../scss/vars' as v;
+
+.task {
+  width: 100%;
+  height: fit-content;
+  filter: drop-shadow(0 0 rem(20) rgba(0, 0, 0, 0.04));
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: 6;
+
+    display: block;
+
+    background-color: var(--white);
+  }
+
+  &::before {
+    right: rem(-2);
+    bottom: rem(-2);
+    left: rem(-2);
+    height: 18%;
+  }
+
+  &::after {
+    right: rem(-2);
+    bottom: rem(-2);
+    width: 1%;
+    height: 58%;
+  }
+
+  @include hover {
+    .wrapper::before {
+      background-color: var(--orange-500);
+    }
+
+    .title {
+      color: var(--white);
+
+      @include m-only {
+        color: var(--foreground);
+      }
+    }
+
+    .bg {
+      transform: translateX(rem(-20));
+    }
+
+    .more {
+      opacity: 1;
+    }
+  }
+
+  @include active {
+    .wrapper::before {
+      background-color: var(--orange-600);
+    }
+  }
+
+  @include m-only {
+    filter: none;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+  z-index: 8;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  aspect-ratio: 1/1;
+  width: 100%;
+  padding: rem(32);
+
+  clip-path: inset(0 0 0 0 round rem(14) rem(14) rem(14) rem(14));
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  &::before {
+    z-index: 0;
+    background-color: var(--white);
+    transition: background-color v.$transition-timing;
+  }
+
+  &::after {
+    z-index: 1;
+    opacity: 0.04;
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      var(--black) 100%
+    );
+  }
+
+  @include tab-only {
+    padding: tvw(20);
+  }
+
+  @include m-only {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    aspect-ratio: unset;
+    width: 100%;
+    padding: 0;
+    padding-block: mvw(12);
+
+    clip-path: unset;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.bg {
+  position: absolute;
+  z-index: 3;
+  bottom: rem(-2);
+  left: 50%;
+  translate: -50% 0;
+
+  width: 125%;
+  height: 68%;
+
+  color: var(--white);
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 191' fill='none' %3E%3Cpath d='M40.5288 107.763C86.1498 93.4079 133.954 120.021 180.927 111.107C215.502 104.546 246.307 53.5674 276.5 29.5C311.885 1.29359 344 0 344 0V191L-16 191V152.354C-16 152.354 3.64311 119.369 40.5288 107.763Z' fill='white' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center 105%;
+  background-size: 100% 89%;
+
+  transition: transform v.$transition-timing;
+
+  @include tab-only {
+    height: 70%;
+  }
+
+  @include m-only {
+    display: none;
+  }
+}
+
+.title {
+  position: relative;
+  z-index: 4;
+  height: fit-content;
+  transition: color v.$transition-timing;
+
+  @include d-only {
+    line-height: 1.11;
+    @include fluid(font-size, 36px, 22px);
+  }
+
+  @include tab-only {
+    font-size: tvw(28px);
+  }
+
+  @include m-only {
+    display: inline-flex;
+    column-gap: mvw(4);
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: unset;
+
+    font-size: mvw(22px);
+
+    &::after {
+      content: '';
+
+      display: block;
+
+      aspect-ratio: 1/1;
+      width: mvw(22);
+
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' color='%23ef6424' fill='none' viewBox='0 0 24 24'%3E%3Cpath d='M4 12H20M20 12L14 6M20 12L14 18' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+}
+
+.more {
+  position: relative;
+  z-index: 4;
+
+  display: flex;
+  column-gap: rem(4);
+  align-items: center;
+
+  opacity: 0;
+
+  transition: opacity v.$transition-timing;
+
+  @include m-only {
+    display: none;
+  }
+}

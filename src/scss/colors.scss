@@ -1,6 +1,7 @@
 :root {
-  --white: #fff;
-  --black: #000;
+  /* fonts */
+  --font-heading: var(--font-marmelad), sans-serif;
+  --font-body: var(--font-pt-sans), sans-serif;
 
   /* orange */
   --orange-50: #fff8f3;
@@ -20,14 +21,13 @@
   --zinc-200: #e4e4e7;
   --zinc-300: #d4d4d8;
   --zinc-400: #a1a1aa;
+  --zinc-900: #18181b;
 
-  /* fonts */
-  --font-heading: var(--font-marmelad), sans-serif;
-  --font-body: var(--font-pt-sans), sans-serif;
+  --white: #fff;
+  --black: var(--zinc-900);
 
   /* text */
-  --foreground: #18181b;
-
+  --foreground: var(--zinc-900);
   --background: var(--white);
 
   /* accent */
