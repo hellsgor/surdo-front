@@ -1,0 +1,9 @@
+@use '../../../scss/mixins' as *;
+
+.richText {
+  p {
+    &:not(:first-child) {
+      @include fluid(margin-top, 16);
+    }
+  }
+}

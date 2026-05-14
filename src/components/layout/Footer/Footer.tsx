@@ -1,8 +1,9 @@
-import type { Footer as FooterData } from '@/types/widgets/Footer';
 import { Button } from '@/components/ui';
+import type { Footer as FooterData } from '@/types/widgets/Footer';
+
 import { Container } from '../Container/Container';
-import { formatCopyRight } from './formatCopyRight';
 import styles from './Footer.module.scss';
+import { formatCopyRight } from './formatCopyRight';
 
 type Props = {
   footer: FooterData;

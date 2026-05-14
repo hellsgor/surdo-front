@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
+
 import { AltArrowRight, HamburgerMenu } from '@solar-icons/react/ssr';
+import clsx from 'clsx';
+
 import { Container } from '../Container/Container';
 import styles from './Header.module.scss';
 
@@ -110,7 +112,11 @@ export function HeaderClient({ children, mobileMenuNav }: Props) {
         onClick={handleDialogClick}
         onKeyDown={handleKeyDown}
       >
-        <button className={styles.closeButton} onClick={closeMenu} aria-label="Закрыть меню">
+        <button
+          className={styles.closeButton}
+          onClick={closeMenu}
+          aria-label="Закрыть меню"
+        >
           <AltArrowRight size={24} weight="Linear" />
         </button>
         {mobileMenuNav}

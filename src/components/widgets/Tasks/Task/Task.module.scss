@@ -1,10 +1,14 @@
-@use '../../../scss/functions' as *;
-@use '../../../scss/mixins' as *;
-@use '../../../scss/vars' as v;
+@use '../../../../scss/functions' as *;
+@use '../../../../scss/mixins' as *;
+@use '../../../../scss/vars' as v;
 
 .task {
+  overflow: clip;
+
   width: 100%;
   height: fit-content;
+  border-radius: rem(14);
+
   filter: drop-shadow(0 0 rem(20) rgba(0, 0, 0, 0.04));
 
   &::before,

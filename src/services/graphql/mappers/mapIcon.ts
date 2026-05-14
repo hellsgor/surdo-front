@@ -1,6 +1,7 @@
-import type { Icon } from '@/types/primitives/Icon';
-import type { UploadFile } from '../generated/graphql';
 import { toAbsoluteUrl } from '@/config/strapi';
+import type { Icon } from '@/types/primitives/Icon';
+
+import type { UploadFile } from '../generated/graphql';
 
 type IconRaw = Pick<UploadFile, 'url' | 'alternativeText'>;
 

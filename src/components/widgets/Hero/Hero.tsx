@@ -1,10 +1,13 @@
+import Image from 'next/image';
+
+import clsx from 'clsx';
+
+import { Button } from '@/components/ui';
 import { Section } from '@/components/ui/Section/Section';
 import type { Hero } from '@/types/widgets/Hero';
-import styles from './Hero.module.scss';
-import clsx from 'clsx';
 import { pretty } from '@/utils/typography';
-import { Button } from '@/components/ui';
-import Image from 'next/image';
+
+import styles from './Hero.module.scss';
 
 type Props = { data: Hero };
 

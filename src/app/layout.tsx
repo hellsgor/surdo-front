@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+
 import { Marmelad, PT_Sans } from 'next/font/google';
-import '@/scss/globals.scss';
+
 import { CtaWidget, Footer, Header } from '@/components/layout';
+import '@/scss/globals.scss';
 import { getGlobalData } from '@/services/graphql/getters/getGlobalData';
 
 const marmelad = Marmelad({

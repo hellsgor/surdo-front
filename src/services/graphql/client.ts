@@ -1,4 +1,5 @@
 import { strapiConfig } from '@/config/strapi';
+
 import { handleGraphQLResponse } from './lib/handleGraphQLResponse';
 
 export async function client<T>(

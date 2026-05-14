@@ -1,10 +1,18 @@
 import Link from 'next/link';
+
 import { SquareTopDown } from '@solar-icons/react/ssr';
 import clsx from 'clsx';
+
 import styles from './Button.module.scss';
 
 type Base = {
-  variant?: 'primary' | 'secondary' | 'neutral' | 'ghost' | 'ghost-white' | 'ghost-orange';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'neutral'
+    | 'ghost'
+    | 'ghost-white'
+    | 'ghost-orange';
   wide?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -24,15 +32,29 @@ type AsLink = Base &
 
 type Props = AsButton | AsLink;
 
-export function Button({ variant = 'primary', wide, children, className, leftText, rightText, ...props }: Props) {
-  const cls = clsx(styles.button, styles[variant], wide && styles.wide, className);
+export function Button({
+  variant = 'primary',
+  wide,
+  children,
+  className,
+  leftText,
+  rightText,
+  ...props
+}: Props) {
+  const cls = clsx(
+    styles.button,
+    styles[variant],
+    wide && styles.wide,
+    className,
+  );
 
   let buttonEl: React.ReactNode;
 
   if (props.href !== undefined) {
     const { href, ...rest } = props as AsLink;
     const isAnchor = href.startsWith('#');
-    const isExternal = href.startsWith('http://') || href.startsWith('https://');
+    const isExternal =
+      href.startsWith('http://') || href.startsWith('https://');
     buttonEl = isAnchor ? (
       <a href={href} className={cls} {...rest}>
         {children}
@@ -50,7 +72,11 @@ export function Button({ variant = 'primary', wide, children, className, leftTex
     );
   } else {
     buttonEl = (
-      <button className={cls} type="button" {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
+      <button
+        className={cls}
+        type="button"
+        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+      >
         {children}
       </button>
     );

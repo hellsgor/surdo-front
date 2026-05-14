@@ -2,5 +2,5 @@
 
 .section {
   position: relative;
-  @include fluid(padding-block, 80px);
+  @include fluid(padding-block, 80, 40, 80);
 }

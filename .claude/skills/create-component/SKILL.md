@@ -22,6 +22,7 @@ description: Реализация нового React-компонента в sur
 **Обязательно, даже если кажется что помнишь.** См. глобальную memory `feedback_check_docs_first.md`.
 
 Как минимум:
+
 - `Next.js 16` — App Router, Server vs Client Components, `next/image`, `next/link`, metadata, revalidation
 - `React 19` — что изменилось, нюансы React Compiler (reactCompiler включён)
 - `@solar-icons/react` — если нужны иконки (правильный импорт, weight)
@@ -98,9 +99,9 @@ export { Name } from './Name/Name';
 Первые строки файла:
 
 ```scss
-@use "../../../scss/mixins" as *;
-@use "../../../scss/functions" as *;
-@use "../../../scss/vars" as v;
+@use '../../../scss/mixins' as *;
+@use '../../../scss/functions' as *;
+@use '../../../scss/vars' as v;
 ```
 
 (количество `../` подгоняй под глубину вложенности)

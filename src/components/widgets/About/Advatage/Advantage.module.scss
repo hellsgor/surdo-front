@@ -1,0 +1,62 @@
+@use '../../../../scss/functions' as *;
+@use '../../../../scss/mixins' as *;
+@use '../../../../scss/vars' as v;
+
+.advantage {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  @include fluid(border-radius, 14);
+
+  @include hover {
+    .image {
+      opacity: 1;
+    }
+  }
+
+  @include m-only {
+    &.active {
+      .image {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @include fluid(padding-top, 168, 104, 140);
+  @include fluid(padding-inline, 32, 32, 16);
+  @include fluid(padding-bottom, 32, 32, 32);
+}
+
+.value {
+  position: absolute;
+  font-family: var(--font-heading);
+  line-height: 1;
+  color: var(--orange-500);
+
+  @include fluid(top, 40, 20);
+  @include fluid(left, 48);
+  @include fluid(font-size, 128, 80, 96);
+}
+
+.image {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+
+  opacity: 0;
+
+  transition: opacity v.$transition-timing;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

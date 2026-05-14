@@ -5,6 +5,15 @@
 .section {
   @include bp-till(v.$br-desk) {
     padding-top: 0;
+    padding-bottom: tvw(150);
+  }
+
+  @include bp-till(v.$br-laptop) {
+    padding-bottom: tvw(80);
+  }
+
+  @include bp-till(v.$br-tab) {
+    padding-bottom: mvw(40);
   }
 }
 

@@ -1,11 +1,14 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+
 import { AltArrowDown } from '@solar-icons/react/ssr';
-import type { MenuItem, MenuItemChild } from '@/types/components/MenuItem';
+
 import { Button } from '@/components/ui';
-import { HeaderClient } from './HeaderClient';
-import styles from './Header.module.scss';
+import type { MenuItem, MenuItemChild } from '@/types/components/MenuItem';
+
 import logo from '../.././../app/icon.png';
+import styles from './Header.module.scss';
+import { HeaderClient } from './HeaderClient';
 
 type Props = {
   menuItems: MenuItem[];

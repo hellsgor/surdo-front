@@ -1,9 +1,11 @@
 import Image from 'next/image';
-import type { Cta } from '@/types/widgets/Cta';
+
 import { Button } from '@/components/ui';
+import type { Cta } from '@/types/widgets/Cta';
+import { nobr } from '@/utils/typography';
+
 import { Container } from '../Container/Container';
 import styles from './CtaWidget.module.scss';
-import { nobr } from '@/utils/typography';
 
 type Props = {
   cta: Cta;

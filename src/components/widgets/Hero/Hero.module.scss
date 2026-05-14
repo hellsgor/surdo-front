@@ -19,7 +19,7 @@
     align-items: flex-end;
 
     height: auto;
-    min-height: 100vh;
+    min-height: calc(100vh - mvw(64));
     padding-top: inherit;
   }
 }

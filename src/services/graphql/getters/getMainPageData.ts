@@ -1,6 +1,7 @@
 import type { MainPage } from '@/types/MainPage';
+
 import { client } from '../client';
-import { mapMainPageData, type MainPageRaw } from '../mappers/mapMainPageData';
+import { type MainPageRaw, mapMainPageData } from '../mappers/mapMainPageData';
 import mainPageQuery from '../queries/mainPage';
 
 export async function getMainPageData(): Promise<{ homePage: MainPage }> {

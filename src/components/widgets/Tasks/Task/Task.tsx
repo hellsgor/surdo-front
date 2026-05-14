@@ -1,7 +1,10 @@
-import styles from './Task.module.scss';
-import type { ServicePageCard } from '@/types/components/ServicePageCard';
 import Link from 'next/link';
+
 import { SquareBottomUp } from '@solar-icons/react/ssr';
+
+import type { ServicePageCard } from '@/types/components/ServicePageCard';
+
+import styles from './Task.module.scss';
 
 type Props = {
   data: ServicePageCard;

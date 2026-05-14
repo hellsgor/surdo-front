@@ -1,0 +1,82 @@
+@use '../../../scss/functions' as *;
+@use '../../../scss/mixins' as *;
+@use '../../../scss/vars' as v;
+
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  @include fluid(padding-right, 120);
+
+  @include bp-till(v.$br-desk) {
+    padding-right: 0;
+  }
+
+  @include bp-till(v.$br-tab) {
+    justify-content: flex-start;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  @include fluid(max-width, 440, 375, 380);
+  @include fluid(padding-block, 90);
+  @include fluid(row-gap, 40);
+
+  @include bp-till(v.$br-tab) {
+    max-width: unset;
+    padding-block: 0;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  @include fluid(row-gap, 16, 40, 16);
+}
+
+.advantages {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  translate: 0 -50%;
+
+  display: flex;
+  flex-wrap: wrap;
+  @include fluid(gap, 40, 40, 32);
+  @include fluid(width, 680, 390, 528);
+
+  @include bp-till(v.$br-tab) {
+    position: relative;
+    top: unset;
+    translate: unset;
+    width: 100%;
+  }
+}
+
+.advantage {
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  @include fluid(flex-basis, 320, 320, 248);
+
+  @include bp-till(v.$br-tab) {
+    flex-basis: unset;
+    aspect-ratio: 1.85;
+    width: 100%;
+  }
+
+  @include hover {
+    .icon {
+      opacity: 0;
+    }
+  }
+}
+
+.button {
+  @include bp-till(v.$br-tab) {
+    width: 100%;
+  }
+}
