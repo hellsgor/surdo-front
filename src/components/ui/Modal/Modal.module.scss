@@ -2,6 +2,18 @@
 @use '../../../scss/functions' as *;
 @use '../../../scss/vars' as v;
 
+.overlayHidden {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: transparent;
+  pointer-events: none;
+
+  :global([role='dialog']) {
+    pointer-events: auto;
+  }
+}
+
 .overlay {
   position: fixed;
   inset: 0;

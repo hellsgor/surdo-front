@@ -1,0 +1,52 @@
+@use '../../../scss/mixins' as *;
+@use '../../../scss/functions' as *;
+@use '../../../scss/vars' as v;
+
+.banner {
+  position: fixed;
+  right: rem(40px);
+  bottom: rem(40px);
+  z-index: 100;
+
+  width: rem(400px);
+  padding: rem(40px);
+  border-radius: rem(24px);
+
+  background: var(--white);
+  filter: drop-shadow(0 rem(8px) rem(32px) rgb(0 0 0 / 16%));
+
+  @include tab-only {
+    right: tvw(20px);
+    bottom: tvw(20px);
+
+    width: tvw(400px);
+    padding: tvw(40px);
+    border-radius: tvw(24px);
+  }
+
+  @include m-only {
+    right: mvw(16px);
+    bottom: mvw(16px);
+    left: mvw(16px);
+
+    width: auto;
+    padding: mvw(24px);
+    border-radius: mvw(16px);
+  }
+}
+
+.text {
+  margin-bottom: rem(16px);
+
+  @include tab-only {
+    margin-bottom: tvw(16px);
+  }
+
+  @include m-only {
+    margin-bottom: mvw(16px);
+  }
+}
+
+.button {
+  width: 100%;
+}

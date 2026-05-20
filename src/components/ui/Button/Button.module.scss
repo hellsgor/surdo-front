@@ -61,6 +61,22 @@
   }
 }
 
+.sm {
+  &.primary,
+  &.secondary,
+  &.neutral {
+    padding: rem(8px) rem(16px);
+
+    @include tab-only {
+      padding: tvw(8px) tvw(16px);
+    }
+
+    @include m-only {
+      padding: mvw(8px) mvw(16px);
+    }
+  }
+}
+
 .wide {
   width: 100%;
 }

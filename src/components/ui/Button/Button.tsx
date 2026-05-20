@@ -14,6 +14,7 @@ type Base = {
     | 'ghost'
     | 'ghost-white'
     | 'ghost-orange';
+  size?: 'md' | 'sm';
   wide?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -35,6 +36,7 @@ type Props = AsButton | AsLink;
 
 export function Button({
   variant = 'primary',
+  size = 'md',
   wide,
   children,
   className,
@@ -45,6 +47,7 @@ export function Button({
   const cls = clsx(
     styles.button,
     styles[variant],
+    styles[size],
     wide && styles.wide,
     className,
   );

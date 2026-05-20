@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { Marmelad, PT_Sans } from 'next/font/google';
 
-import { CtaWidget, Footer, Header } from '@/components/layout';
+import { CookieBanner, CtaWidget, Footer, Header } from '@/components/layout';
 import { IconsSprite, ModalProvider } from '@/components/ui';
 import '@/scss/globals.scss';
 import { getGlobalData } from '@/services/graphql/getters/getGlobalData';
@@ -44,6 +44,7 @@ export default async function RootLayout({
           <main>{children}</main>
           <CtaWidget cta={globalData.cta} />
           <Footer footer={globalData.footer} />
+          <CookieBanner />
         </ModalProvider>
       </body>
     </html>
