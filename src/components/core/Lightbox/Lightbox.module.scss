@@ -1,0 +1,53 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+@use '../../../scss/mixins' as *;
+@use '../../../scss/vars' as v;
+
+.lightbox {
+  :global(.yarl__thumbnails_thumbnail:hover) {
+    border-color: var(--orange-300);
+  }
+
+  :global(.yarl__slide_title) {
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+  }
+
+  :global(.yarl__slide) {
+    padding-top: 80px;
+  }
+
+  @include bp-from(v.$br-tab) {
+    :global(.yarl__navigation_prev),
+    :global(.yarl__navigation_next) {
+      &:hover {
+        color: var(--orange-300);
+      }
+
+      &:active {
+        color: var(--accent);
+      }
+    }
+  }
+
+  @include m-only {
+    :global(.yarl__navigation_prev),
+    :global(.yarl__navigation_next) {
+      display: none;
+    }
+
+    :global(.yarl__button) {
+      border-radius: 50%;
+      color: var(--accent);
+      background-color: var(--white);
+
+      &:hover {
+        background-color: var(--orange-100);
+      }
+
+      &:active {
+        background-color: var(--orange-200);
+      }
+    }
+  }
+}

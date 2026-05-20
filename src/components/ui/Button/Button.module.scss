@@ -37,6 +37,12 @@
     cursor: not-allowed;
     opacity: 0.5;
   }
+
+  .external {
+    align-self: flex-start;
+    @include fluid(width, 12);
+    @include fluid(height, 12);
+  }
 }
 
 .primary,

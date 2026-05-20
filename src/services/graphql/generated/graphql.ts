@@ -143,7 +143,7 @@ export type ComponentSharedImageInput = {
 
 export type ComponentSharedLink = {
   __typename?: 'ComponentSharedLink';
-  href: Scalars['String']['output'];
+  href: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   label: Scalars['String']['output'];
   leftText: Maybe<Scalars['String']['output']>;
@@ -393,6 +393,43 @@ export type DeleteMutationResponse = {
   documentId: Scalars['ID']['output'];
 };
 
+export type Dimple = {
+  __typename?: 'Dimple';
+  Image: Maybe<ComponentSharedImage>;
+  Sort: Scalars['Int']['output'];
+  Title: Maybe<Scalars['String']['output']>;
+  createdAt: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  publishedAt: Maybe<Scalars['DateTime']['output']>;
+  updatedAt: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type DimpleEntityResponseCollection = {
+  __typename?: 'DimpleEntityResponseCollection';
+  nodes: Array<Dimple>;
+  pageInfo: Pagination;
+};
+
+export type DimpleFiltersInput = {
+  Image: InputMaybe<ComponentSharedImageFiltersInput>;
+  Sort: InputMaybe<IntFilterInput>;
+  Title: InputMaybe<StringFilterInput>;
+  and: InputMaybe<Array<InputMaybe<DimpleFiltersInput>>>;
+  createdAt: InputMaybe<DateTimeFilterInput>;
+  documentId: InputMaybe<IdFilterInput>;
+  not: InputMaybe<DimpleFiltersInput>;
+  or: InputMaybe<Array<InputMaybe<DimpleFiltersInput>>>;
+  publishedAt: InputMaybe<DateTimeFilterInput>;
+  updatedAt: InputMaybe<DateTimeFilterInput>;
+};
+
+export type DimpleInput = {
+  Image: InputMaybe<ComponentSharedImageInput>;
+  Sort: InputMaybe<Scalars['Int']['input']>;
+  Title: InputMaybe<Scalars['String']['input']>;
+  publishedAt: InputMaybe<Scalars['DateTime']['input']>;
+};
+
 export type Enum_Menuitem_Side =
   | 'left'
   | 'right';
@@ -485,7 +522,7 @@ export type FooterInput = {
   publishedAt: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type GenericMorph = ComponentSharedAdvantage | ComponentSharedBullet | ComponentSharedColorizedText | ComponentSharedFormatItem | ComponentSharedImage | ComponentSharedLink | ComponentSharedMeta | ComponentWidgetsAbout | ComponentWidgetsFaq | ComponentWidgetsHero | ComponentWidgetsReviews | ComponentWidgetsSlassFormat | ComponentWidgetsTasks | Cta | FaqItem | Footer | HomePage | I18NLocale | MenuItem | Review | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | ReviewsTag | ServicePage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentSharedAdvantage | ComponentSharedBullet | ComponentSharedColorizedText | ComponentSharedFormatItem | ComponentSharedImage | ComponentSharedLink | ComponentSharedMeta | ComponentWidgetsAbout | ComponentWidgetsFaq | ComponentWidgetsHero | ComponentWidgetsReviews | ComponentWidgetsSlassFormat | ComponentWidgetsTasks | Cta | Dimple | FaqItem | Footer | HomePage | I18NLocale | MenuItem | Review | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | ReviewsTag | ServicePage | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type HomePage = {
   __typename?: 'HomePage';
@@ -687,6 +724,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword: Maybe<UsersPermissionsLoginPayload>;
+  createDimple: Maybe<Dimple>;
   createFaqItem: Maybe<FaqItem>;
   createMenuItem: Maybe<MenuItem>;
   createReview: Maybe<Review>;
@@ -699,6 +737,7 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteCta: Maybe<DeleteMutationResponse>;
+  deleteDimple: Maybe<DeleteMutationResponse>;
   deleteFaqItem: Maybe<DeleteMutationResponse>;
   deleteFooter: Maybe<DeleteMutationResponse>;
   deleteHomePage: Maybe<DeleteMutationResponse>;
@@ -723,6 +762,7 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword: Maybe<UsersPermissionsLoginPayload>;
   updateCta: Maybe<Cta>;
+  updateDimple: Maybe<Dimple>;
   updateFaqItem: Maybe<FaqItem>;
   updateFooter: Maybe<Footer>;
   updateHomePage: Maybe<HomePage>;
@@ -744,6 +784,12 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
   passwordConfirmation: Scalars['String']['input'];
+};
+
+
+export type MutationCreateDimpleArgs = {
+  data: DimpleInput;
+  status?: InputMaybe<PublicationStatus>;
 };
 
 
@@ -796,6 +842,11 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
+};
+
+
+export type MutationDeleteDimpleArgs = {
+  documentId: Scalars['ID']['input'];
 };
 
 
@@ -878,6 +929,13 @@ export type MutationResetPasswordArgs = {
 
 export type MutationUpdateCtaArgs = {
   data: CtaInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type MutationUpdateDimpleArgs = {
+  data: DimpleInput;
+  documentId: Scalars['ID']['input'];
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -982,6 +1040,9 @@ export type PublicationStatus =
 export type Query = {
   __typename?: 'Query';
   cta: Maybe<Cta>;
+  dimple: Maybe<Dimple>;
+  dimples: Array<Maybe<Dimple>>;
+  dimples_connection: Maybe<DimpleEntityResponseCollection>;
   faqItem: Maybe<FaqItem>;
   faqItems: Array<Maybe<FaqItem>>;
   faqItems_connection: Maybe<FaqItemEntityResponseCollection>;
@@ -1023,6 +1084,31 @@ export type Query = {
 
 export type QueryCtaArgs = {
   hasPublishedVersion: InputMaybe<Scalars['Boolean']['input']>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryDimpleArgs = {
+  documentId: Scalars['ID']['input'];
+  hasPublishedVersion: InputMaybe<Scalars['Boolean']['input']>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryDimplesArgs = {
+  filters: InputMaybe<DimpleFiltersInput>;
+  hasPublishedVersion: InputMaybe<Scalars['Boolean']['input']>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryDimples_ConnectionArgs = {
+  filters: InputMaybe<DimpleFiltersInput>;
+  hasPublishedVersion: InputMaybe<Scalars['Boolean']['input']>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -1836,14 +1922,19 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>;
 };
 
+export type DimplesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DimplesQuery = { __typename?: 'Query', dimples_connection: { __typename?: 'DimpleEntityResponseCollection', nodes: Array<{ __typename?: 'Dimple', documentId: string, Title: string | null, Sort: number, Image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null }> } | null };
+
 export type GlobalDataQueryVariables = Exact<{
   filters: InputMaybe<MenuItemFiltersInput>;
 }>;
 
 
-export type GlobalDataQuery = { __typename?: 'Query', menuItems_connection: { __typename?: 'MenuItemEntityResponseCollection', nodes: Array<{ __typename?: 'MenuItem', title: string, order: number, side: Enum_Menuitem_Side | null, path: string | null, isDisabled: boolean | null, children: Array<{ __typename?: 'MenuItem', path: string | null, title: string, isDisabled: boolean | null } | null> }> } | null, cta: { __typename?: 'Cta', text: string, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null }, tgLink: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, vkLink: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null } | null, footer: { __typename?: 'Footer', copyRight: string | null, privacy: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null, createdByWhom: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null } | null };
+export type GlobalDataQuery = { __typename?: 'Query', menuItems_connection: { __typename?: 'MenuItemEntityResponseCollection', nodes: Array<{ __typename?: 'MenuItem', title: string, order: number, side: Enum_Menuitem_Side | null, path: string | null, isDisabled: boolean | null, children: Array<{ __typename?: 'MenuItem', path: string | null, title: string, isDisabled: boolean | null } | null> }> } | null, cta: { __typename?: 'Cta', text: string, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null }, tgLink: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, vkLink: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null } | null, footer: { __typename?: 'Footer', copyRight: string | null, privacy: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, createdByWhom: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null } | null };
 
 export type MainPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MainPageQuery = { __typename?: 'Query', homePage: { __typename?: 'HomePage', hero: { __typename?: 'ComponentWidgetsHero', bullets: Array<{ __typename?: 'ComponentSharedBullet', text: string | null, id: string } | null> | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null, primaryButton: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null, secondaryButton: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null, title: { __typename?: 'ComponentSharedColorizedText', text: string | null, colored: string | null } | null } | null, tasks: { __typename?: 'ComponentWidgetsTasks', text: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, servicePages_connection: { __typename?: 'ServicePageRelationResponseCollection', nodes: Array<{ __typename?: 'ServicePage', order: number, slug: string | null, title: string | null, documentId: string }> } | null } | null, about: { __typename?: 'ComponentWidgetsAbout', topText: string | null, bottomText: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, button: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null, advantages: Array<{ __typename?: 'ComponentSharedAdvantage', id: string, label: string | null, value: string | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null } | null> | null } | null, reviews: { __typename?: 'ComponentWidgetsReviews', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, profi: { __typename?: 'ComponentSharedLink', href: string, label: string, leftText: string | null, rightText: string | null } | null, items_connection: { __typename?: 'ReviewRelationResponseCollection', nodes: Array<{ __typename?: 'Review', age: number | null, documentId: string, name: string, order: number, showOnMainPage: boolean | null, text: string | null, reviewsTags_connection: { __typename?: 'ReviewsTagRelationResponseCollection', nodes: Array<{ __typename?: 'ReviewsTag', documentId: string, text: string, value: string }> } | null }> } | null } | null, classesFormat: { __typename?: 'ComponentWidgetsSlassFormat', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, items: Array<{ __typename?: 'ComponentSharedFormatItem', id: string, description: string, title: string, icon: { __typename?: 'UploadFile', url: string, alternativeText: string | null } } | null> | null } | null, faq: { __typename?: 'ComponentWidgetsFaq', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, faqItems_connection: { __typename?: 'FaqItemRelationResponseCollection', nodes: Array<{ __typename?: 'FaqItem', question: string, answer: string, documentId: string }> } | null } | null } | null };
+export type MainPageQuery = { __typename?: 'Query', dimples_connection: { __typename?: 'DimpleEntityResponseCollection', nodes: Array<{ __typename?: 'Dimple', documentId: string, Title: string | null, Sort: number, Image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null }> } | null, homePage: { __typename?: 'HomePage', hero: { __typename?: 'ComponentWidgetsHero', bullets: Array<{ __typename?: 'ComponentSharedBullet', text: string | null, id: string } | null> | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null, primaryButton: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, secondaryButton: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, title: { __typename?: 'ComponentSharedColorizedText', text: string | null, colored: string | null } | null } | null, tasks: { __typename?: 'ComponentWidgetsTasks', text: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, servicePages_connection: { __typename?: 'ServicePageRelationResponseCollection', nodes: Array<{ __typename?: 'ServicePage', order: number, slug: string | null, title: string | null, documentId: string }> } | null } | null, about: { __typename?: 'ComponentWidgetsAbout', topText: string | null, bottomText: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, button: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, advantages: Array<{ __typename?: 'ComponentSharedAdvantage', id: string, label: string | null, value: string | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null } | null> | null } | null, reviews: { __typename?: 'ComponentWidgetsReviews', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, profi: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, items_connection: { __typename?: 'ReviewRelationResponseCollection', nodes: Array<{ __typename?: 'Review', age: number | null, documentId: string, name: string, order: number, showOnMainPage: boolean | null, text: string | null, reviewsTags_connection: { __typename?: 'ReviewsTagRelationResponseCollection', nodes: Array<{ __typename?: 'ReviewsTag', documentId: string, text: string, value: string }> } | null }> } | null } | null, classesFormat: { __typename?: 'ComponentWidgetsSlassFormat', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, items: Array<{ __typename?: 'ComponentSharedFormatItem', id: string, description: string, title: string, icon: { __typename?: 'UploadFile', url: string, alternativeText: string | null } } | null> | null } | null, faq: { __typename?: 'ComponentWidgetsFaq', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, faqItems_connection: { __typename?: 'FaqItemRelationResponseCollection', nodes: Array<{ __typename?: 'FaqItem', question: string, answer: string, documentId: string }> } | null } | null } | null };

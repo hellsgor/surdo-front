@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { AltArrowRight, HamburgerMenu } from '@solar-icons/react/ssr';
 import clsx from 'clsx';
+
+import { Icon } from '@/components/ui';
 
 import { Container } from '../Container/Container';
 import styles from './Header.module.scss';
@@ -102,7 +103,7 @@ export function HeaderClient({ children, mobileMenuNav }: Props) {
           onClick={openMenu}
           aria-label="Открыть меню"
         >
-          <HamburgerMenu size={24} weight="Linear" />
+          <Icon name="burger" size={24} />
         </button>
       </Container>
       <dialog
@@ -117,7 +118,7 @@ export function HeaderClient({ children, mobileMenuNav }: Props) {
           onClick={closeMenu}
           aria-label="Закрыть меню"
         >
-          <AltArrowRight size={24} weight="Linear" />
+          <Icon name="close" size={24} />
         </button>
         {mobileMenuNav}
       </dialog>

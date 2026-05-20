@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import { SquareTopDown } from '@solar-icons/react/ssr';
 import clsx from 'clsx';
+
+import { Icon } from '@/components/ui';
 
 import styles from './Button.module.scss';
 
@@ -22,7 +23,7 @@ type Base = {
 
 type AsButton = Base &
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof Base> & {
-    href?: undefined;
+    href?: undefined | null;
   };
 
 type AsLink = Base &
@@ -50,7 +51,17 @@ export function Button({
 
   let buttonEl: React.ReactNode;
 
-  if (props.href !== undefined) {
+  if (props.href === undefined || props.href === null) {
+    buttonEl = (
+      <button
+        className={cls}
+        type="button"
+        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+      >
+        {children}
+      </button>
+    );
+  } else {
     const { href, ...rest } = props as AsLink;
     const isAnchor = href.startsWith('#');
     const isExternal =
@@ -67,18 +78,10 @@ export function Button({
         {...rest}
       >
         {children}
-        {isExternal && <SquareTopDown size="1em" weight="Linear" />}
+        {isExternal && (
+          <Icon name="external-link" size="12" className={styles.external} />
+        )}
       </Link>
-    );
-  } else {
-    buttonEl = (
-      <button
-        className={cls}
-        type="button"
-        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
-      >
-        {children}
-      </button>
     );
   }
 

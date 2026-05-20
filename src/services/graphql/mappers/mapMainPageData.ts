@@ -36,7 +36,7 @@ export function mapMainPageData(raw: MainPageRaw): MainPage {
       title: raw.about?.title ?? EMPTY_COLORED_TEXT,
       topText: raw.about?.topText ?? null,
       bottomText: raw.about?.bottomText ?? null,
-      button: raw.about?.button ?? EMPTY_LINK,
+      button: raw.about?.button ?? null,
       advantages:
         raw.about?.advantages?.flatMap((adv) =>
           adv

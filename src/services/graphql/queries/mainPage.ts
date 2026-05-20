@@ -1,5 +1,21 @@
 const mainPageQuery = /* GraphQL */ `
   query MainPage {
+    dimples_connection {
+      nodes {
+        documentId
+        Title
+        Sort
+        Image {
+          alt
+          desktop {
+            url
+          }
+          mobile {
+            url
+          }
+        }
+      }
+    }
     homePage {
       hero {
         bullets {

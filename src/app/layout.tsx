@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Marmelad, PT_Sans } from 'next/font/google';
 
 import { CtaWidget, Footer, Header } from '@/components/layout';
+import { IconsSprite, ModalProvider } from '@/components/ui';
 import '@/scss/globals.scss';
 import { getGlobalData } from '@/services/graphql/getters/getGlobalData';
 
@@ -37,10 +38,13 @@ export default async function RootLayout({
   return (
     <html lang="ru" className={`${marmelad.variable} ${ptSans.variable}`}>
       <body>
-        <Header menuItems={globalData.menuItems} />
-        <main>{children}</main>
-        <CtaWidget cta={globalData.cta} />
-        <Footer footer={globalData.footer} />
+        <IconsSprite />
+        <ModalProvider>
+          <Header menuItems={globalData.menuItems} />
+          <main>{children}</main>
+          <CtaWidget cta={globalData.cta} />
+          <Footer footer={globalData.footer} />
+        </ModalProvider>
       </body>
     </html>
   );

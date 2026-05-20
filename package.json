@@ -2,10 +2,14 @@
   "name": "surdo-front",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "predev": "yarn codegen || true",
+    "icons": "node src/lib/sprite-generator.js",
+    "icons:force": "node src/lib/sprite-generator.js --force",
+    "icons:watch": "node src/lib/sprite-generator.js --watch",
+    "predev": "yarn icons && (yarn codegen || true)",
     "dev": "next dev",
-    "prebuild": "yarn codegen",
+    "prebuild": "yarn icons && yarn codegen",
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
@@ -15,14 +19,15 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@solar-icons/react": "^1.1.0",
     "clsx": "^2.1.1",
     "graphql": "^16.13.2",
     "modern-normalize": "^3.0.1",
     "next": "16.2.1",
     "react": "19.2.4",
+    "react-aria-components": "^1.17.0",
     "react-dom": "19.2.4",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "yet-another-react-lightbox": "^3.32.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^6.2.1",

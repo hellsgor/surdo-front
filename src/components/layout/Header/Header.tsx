@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { AltArrowDown } from '@solar-icons/react/ssr';
-
-import { Button } from '@/components/ui';
+import { Button, Icon } from '@/components/ui';
 import type { MenuItem, MenuItemChild } from '@/types/components/MenuItem';
 
 import logo from '../.././../app/icon.png';
@@ -26,7 +24,7 @@ function DesktopNavItem({ item }: { item: MenuItem }) {
         {...(item.isDisabled && { 'aria-disabled': 'true' })}
       >
         {item.title}
-        {hasChildren && <AltArrowDown size="1em" weight="Linear" />}
+        {hasChildren && <Icon name="chevron-down" size="1em" />}
       </Button>
       {hasChildren && (
         <div className={styles.dropdown}>

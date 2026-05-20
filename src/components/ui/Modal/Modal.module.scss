@@ -1,0 +1,67 @@
+@use '../../../scss/mixins' as *;
+@use '../../../scss/functions' as *;
+@use '../../../scss/vars' as v;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgb(0 0 0 / 50%);
+  display: grid;
+  place-items: center;
+  padding: rem(40px) rem(20px);
+  overflow-y: auto;
+
+  &[data-entering] {
+    animation: overlayIn 0.2s v.$ease-out;
+  }
+
+  &[data-exiting] {
+    animation: overlayIn 0.2s v.$ease-in reverse;
+  }
+
+  @include m-only {
+    padding: mvw(20px) mvw(16px);
+  }
+}
+
+.modal {
+  background: var(--white);
+  border-radius: rem(24px);
+  padding: rem(40px);
+  width: 100%;
+  max-width: rem(640px);
+  max-height: 90dvh;
+  overflow-y: auto;
+
+  &[data-entering] {
+    animation: modalIn 0.3s v.$ease-out;
+  }
+
+  @include m-only {
+    padding: mvw(24px);
+    border-radius: mvw(16px);
+  }
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

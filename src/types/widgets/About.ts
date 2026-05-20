@@ -6,6 +6,6 @@ export interface About {
   title: ColoredText;
   topText: string | null;
   bottomText: string | null;
-  button: Link;
+  button: Link | null;
   advantages: Advantage[];
 }
