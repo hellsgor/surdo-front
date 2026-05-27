@@ -15,6 +15,14 @@
     }
   }
 
+  @include tab-only {
+    &.active {
+      .image {
+        opacity: 1;
+      }
+    }
+  }
+
   @include m-only {
     &.active {
       .image {
@@ -28,7 +36,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  @include fluid(padding-top, 168, 104, 140);
+  @include fluid(padding-top, 168, 104, 112);
   @include fluid(padding-inline, 32, 32, 16);
   @include fluid(padding-bottom, 32, 32, 32);
 }
@@ -39,9 +47,9 @@
   line-height: 1;
   color: var(--orange-500);
 
-  @include fluid(top, 40, 20);
-  @include fluid(left, 48);
-  @include fluid(font-size, 128, 80, 96);
+  @include fluid(top, 40, 20, 20);
+  @include fluid(left, 48, 48, 36);
+  @include fluid(font-size, 128, 64, 96);
 }
 
 .image {

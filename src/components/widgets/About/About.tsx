@@ -24,9 +24,9 @@ export function About({
               <RichText className={styles.topText}>{topText}</RichText>
             )}
             <ul role="list" className={styles.advantages}>
-              {advantages.map((item) => (
+              {advantages.map((item, i) => (
                 <li className={styles.advantage} key={item.id}>
-                  <Advantage {...item} />
+                  <Advantage {...item} column={i % 2} />
                 </li>
               ))}
             </ul>

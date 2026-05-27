@@ -5,11 +5,11 @@ import { nobr } from '@/utils/typography';
 import { AdvantageWrapper } from './AdvantageWrapper';
 import styles from './Advantage.module.scss';
 
-type Props = AdvantageType & { className?: string };
+type Props = AdvantageType & { className?: string; column?: number };
 
-export function Advantage({ value, label, image, className }: Props) {
+export function Advantage({ value, label, image, className, column }: Props) {
   return (
-    <AdvantageWrapper className={className}>
+    <AdvantageWrapper className={className} column={column}>
       <div className={styles.content}>
         <span className={styles.value}>{value}</span>
         <p className={styles.label}>{nobr(label || '')}</p>
