@@ -1922,11 +1922,6 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>;
 };
 
-export type DimplesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DimplesQuery = { __typename?: 'Query', dimples_connection: { __typename?: 'DimpleEntityResponseCollection', nodes: Array<{ __typename?: 'Dimple', documentId: string, Title: string | null, Sort: number, Image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null }> } | null };
-
 export type GlobalDataQueryVariables = Exact<{
   filters: InputMaybe<MenuItemFiltersInput>;
 }>;
