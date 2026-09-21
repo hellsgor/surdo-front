@@ -4,8 +4,8 @@
 
 body {
   font-family: var(--font-body);
-  line-height: 1.55;
   font-size: rem(18px);
+  line-height: 1.55;
 
   @include tab-only {
     font-size: clamp(rem(16px), tvw(18px), rem(18px));
