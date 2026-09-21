@@ -13,12 +13,6 @@
         "source.organizeImports": true,
         "source.fixAll.eslint": true
       }
-    },
-    "SCSS": {
-      "formatter": "prettier",
-      "code_actions_on_format": {
-        "source.fixAll.stylelint": true
-      }
     }
   }
 }
