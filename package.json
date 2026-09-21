@@ -16,7 +16,8 @@
     "format:check": "prettier --check .",
     "lint": "eslint && stylelint \"src/**/*.scss\"",
     "lint:styles": "stylelint \"src/**/*.scss\"",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -30,6 +31,7 @@
     "yet-another-react-lightbox": "^3.32.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.3",
     "@graphql-codegen/cli": "^6.2.1",
     "@graphql-codegen/typescript": "^5.0.9",
     "@graphql-codegen/typescript-operations": "^5.0.9",
@@ -40,6 +42,8 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16",
     "prettier": "^3.8.3",
     "sass": "^1.98.0",
     "stylelint": "^17.7.0",
@@ -47,5 +51,10 @@
     "stylelint-config-recommended-scss": "^17.0.1",
     "stylelint-order": "^8.1.1",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.scss": "stylelint --fix",
+    "*.{js,jsx,ts,tsx,scss,json,md}": "prettier --write"
   }
 }
