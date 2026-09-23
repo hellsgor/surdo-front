@@ -1,0 +1,30 @@
+@use '../../../scss/mixins' as *;
+@use '../../../scss/functions' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  @include fluid(row-gap, 60, 24, 40);
+}
+
+.header {
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-between;
+
+  @include m-only {
+    flex-direction: column;
+    row-gap: mvw(12);
+    align-items: flex-start;
+  }
+}
+
+.review {
+  width: 100%;
+
+  // На мобиле кнопка «следующий» лежит поверх правого края слайда,
+  // паддинг держит контент отзыва вне её зоны.
+  @include m-only {
+    padding-right: mvw(56);
+  }
+}

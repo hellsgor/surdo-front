@@ -1,4 +1,5 @@
 export { Button } from './Button/Button';
+export { ExpandableHitArea } from './ExpandableHitArea/ExpandableHitArea';
 export { Icon, IconsSprite } from './Icon';
 export type { IconName } from './Icon';
 export { Modal } from './Modal/Modal';

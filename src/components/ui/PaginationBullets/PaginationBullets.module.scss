@@ -1,0 +1,27 @@
+@use '../../../scss/functions' as *;
+@use '../../../scss/mixins' as *;
+
+:global(.swiper-pagination-clickable .swiper-pagination-bullet) {
+  --swiper-pagination-bullet-size: #{rem(8)};
+  --swiper-pagination-bullet-horizontal-gap: #{rem(4)};
+
+  border: 1px solid var(--orange-300);
+  border-radius: 50%;
+  opacity: 1;
+  background: transparent;
+
+  @include hover {
+    border-color: var(--accent);
+  }
+
+  @include active {
+    border-color: var(--orange-700);
+  }
+}
+
+:global(.swiper-pagination-clickable .swiper-pagination-bullet-active) {
+  pointer-events: none;
+  cursor: default;
+  border-color: var(--accent);
+  background: var(--accent);
+}

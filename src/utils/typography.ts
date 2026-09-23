@@ -29,3 +29,29 @@ export function colorize({ text, colored }: ColoredText) {
 export function pretty({ text, colored }: ColoredText) {
   return nobr(colored ? colorize({ text, colored }) : (text ?? ''));
 }
+
+/**
+ * Возвращает число со склонённым словом по правилам русского языка.
+ * Пример: pluralize(2, 'год', 'года', 'лет') → '2 года'
+ */
+export function pluralize(
+  n: number,
+  one: string,
+  few: string,
+  many: string,
+): string {
+  const abs = Math.abs(n);
+  const mod10 = abs % 10;
+  const mod100 = abs % 100;
+
+  const form =
+    mod100 >= 11 && mod100 <= 19
+      ? many
+      : mod10 === 1
+        ? one
+        : mod10 >= 2 && mod10 <= 4
+          ? few
+          : many;
+
+  return nobr(`${n} ${form}`);
+}

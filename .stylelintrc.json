@@ -23,6 +23,10 @@
         "ignore": ["after-comment", "inside-block"]
       }
     ],
-    "scss/no-global-function-names": null
+    "scss/no-global-function-names": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global", "local"] }
+    ]
   }
 }

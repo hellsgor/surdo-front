@@ -1,11 +1,13 @@
 'use client';
 
+import clsx from 'clsx';
 import {
-  Dialog,
   Modal as AriaModal,
+  Dialog,
   ModalOverlay,
 } from 'react-aria-components';
-import clsx from 'clsx';
+
+import { Button, Icon } from '@/components/ui';
 
 import styles from './Modal.module.scss';
 
@@ -16,6 +18,8 @@ type Props = {
   className?: string;
   isDismissable?: boolean;
   hasOverlay?: boolean;
+  ariaLabel: string;
+  showCloseButton?: boolean;
 };
 
 export function Modal({
@@ -25,6 +29,8 @@ export function Modal({
   className,
   isDismissable = true,
   hasOverlay = true,
+  ariaLabel,
+  showCloseButton = isDismissable,
 }: Props) {
   return (
     <ModalOverlay
@@ -34,7 +40,21 @@ export function Modal({
       className={hasOverlay ? styles.overlay : styles.overlayHidden}
     >
       <AriaModal className={clsx(styles.modal, className)}>
-        <Dialog>{children}</Dialog>
+        <Dialog aria-label={ariaLabel} className={styles.dialog}>
+          {showCloseButton && (
+            <Button
+              variant="neutral"
+              shape="round"
+              size="sm"
+              aria-label="Закрыть"
+              className={styles.closeButton}
+              onClick={onClose}
+            >
+              <Icon name="close" size="20" />
+            </Button>
+          )}
+          {children}
+        </Dialog>
       </AriaModal>
     </ModalOverlay>
   );

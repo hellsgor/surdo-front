@@ -161,3 +161,36 @@
     background-color: var(--orange-100);
   }
 }
+
+.chip {
+  padding: rem(4) rem(8);
+  border-radius: rem(14);
+
+  font-size: rem(12);
+  line-height: rem(16);
+
+  background-color: var(--zinc-150);
+
+  @include hover {
+    background-color: var(--zinc-200);
+  }
+
+  @include active {
+    background-color: var(--zinc-300);
+  }
+}
+
+.round {
+  padding: 0;
+  border-radius: 50%;
+
+  @include fluid(width, 56, 48);
+  @include fluid(height, 56, 48);
+}
+
+.sm.round {
+  padding: 0;
+
+  @include fluid(width, 40, 32);
+  @include fluid(height, 40, 32);
+}

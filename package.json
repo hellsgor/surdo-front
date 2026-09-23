@@ -28,6 +28,7 @@
     "react-aria-components": "^1.17.0",
     "react-dom": "19.2.4",
     "react-markdown": "^10.1.0",
+    "swiper": "^12.2.0",
     "yet-another-react-lightbox": "^3.32.0"
   },
   "devDependencies": {

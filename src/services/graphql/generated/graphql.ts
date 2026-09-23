@@ -264,29 +264,12 @@ export type ComponentWidgetsHeroInput = {
 export type ComponentWidgetsReviews = {
   __typename?: 'ComponentWidgetsReviews';
   id: Scalars['ID']['output'];
-  items: Array<Maybe<Review>>;
-  items_connection: Maybe<ReviewRelationResponseCollection>;
   profi: Maybe<ComponentSharedLink>;
   title: Maybe<ComponentSharedColorizedText>;
 };
 
-
-export type ComponentWidgetsReviewsItemsArgs = {
-  filters: InputMaybe<ReviewFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type ComponentWidgetsReviewsItems_ConnectionArgs = {
-  filters: InputMaybe<ReviewFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type ComponentWidgetsReviewsInput = {
   id: InputMaybe<Scalars['ID']['input']>;
-  items: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   profi: InputMaybe<ComponentSharedLinkInput>;
   title: InputMaybe<ComponentSharedColorizedTextInput>;
 };
@@ -1418,11 +1401,6 @@ export type ReviewInput = {
   text: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ReviewRelationResponseCollection = {
-  __typename?: 'ReviewRelationResponseCollection';
-  nodes: Array<Review>;
-};
-
 export type ReviewWorkflowsWorkflow = {
   __typename?: 'ReviewWorkflowsWorkflow';
   contentTypes: Scalars['JSON']['output'];
@@ -1932,4 +1910,4 @@ export type GlobalDataQuery = { __typename?: 'Query', menuItems_connection: { __
 export type MainPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MainPageQuery = { __typename?: 'Query', dimples_connection: { __typename?: 'DimpleEntityResponseCollection', nodes: Array<{ __typename?: 'Dimple', documentId: string, Title: string | null, Sort: number, Image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null }> } | null, homePage: { __typename?: 'HomePage', hero: { __typename?: 'ComponentWidgetsHero', bullets: Array<{ __typename?: 'ComponentSharedBullet', text: string | null, id: string } | null> | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null, primaryButton: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, secondaryButton: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, title: { __typename?: 'ComponentSharedColorizedText', text: string | null, colored: string | null } | null } | null, tasks: { __typename?: 'ComponentWidgetsTasks', text: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, servicePages_connection: { __typename?: 'ServicePageRelationResponseCollection', nodes: Array<{ __typename?: 'ServicePage', order: number, slug: string | null, title: string | null, documentId: string }> } | null } | null, about: { __typename?: 'ComponentWidgetsAbout', topText: string | null, bottomText: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, button: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, advantages: Array<{ __typename?: 'ComponentSharedAdvantage', id: string, label: string | null, value: string | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null } | null> | null } | null, reviews: { __typename?: 'ComponentWidgetsReviews', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, profi: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, items_connection: { __typename?: 'ReviewRelationResponseCollection', nodes: Array<{ __typename?: 'Review', age: number | null, documentId: string, name: string, order: number, showOnMainPage: boolean | null, text: string | null, reviewsTags_connection: { __typename?: 'ReviewsTagRelationResponseCollection', nodes: Array<{ __typename?: 'ReviewsTag', documentId: string, text: string, value: string }> } | null }> } | null } | null, classesFormat: { __typename?: 'ComponentWidgetsSlassFormat', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, items: Array<{ __typename?: 'ComponentSharedFormatItem', id: string, description: string, title: string, icon: { __typename?: 'UploadFile', url: string, alternativeText: string | null } } | null> | null } | null, faq: { __typename?: 'ComponentWidgetsFaq', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, faqItems_connection: { __typename?: 'FaqItemRelationResponseCollection', nodes: Array<{ __typename?: 'FaqItem', question: string, answer: string, documentId: string }> } | null } | null } | null };
+export type MainPageQuery = { __typename?: 'Query', dimples_connection: { __typename?: 'DimpleEntityResponseCollection', nodes: Array<{ __typename?: 'Dimple', documentId: string, Title: string | null, Sort: number, Image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null }> } | null, homePage: { __typename?: 'HomePage', hero: { __typename?: 'ComponentWidgetsHero', bullets: Array<{ __typename?: 'ComponentSharedBullet', text: string | null, id: string } | null> | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null, primaryButton: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, secondaryButton: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, title: { __typename?: 'ComponentSharedColorizedText', text: string | null, colored: string | null } | null } | null, tasks: { __typename?: 'ComponentWidgetsTasks', text: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, servicePages_connection: { __typename?: 'ServicePageRelationResponseCollection', nodes: Array<{ __typename?: 'ServicePage', order: number, slug: string | null, title: string | null, documentId: string }> } | null } | null, about: { __typename?: 'ComponentWidgetsAbout', topText: string | null, bottomText: string | null, title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, button: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null, advantages: Array<{ __typename?: 'ComponentSharedAdvantage', id: string, label: string | null, value: string | null, image: { __typename?: 'ComponentSharedImage', alt: string | null, desktop: { __typename?: 'UploadFile', url: string } | null, mobile: { __typename?: 'UploadFile', url: string } | null } | null } | null> | null } | null, reviews: { __typename?: 'ComponentWidgetsReviews', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, profi: { __typename?: 'ComponentSharedLink', href: string | null, label: string, leftText: string | null, rightText: string | null } | null } | null, classesFormat: { __typename?: 'ComponentWidgetsSlassFormat', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, items: Array<{ __typename?: 'ComponentSharedFormatItem', id: string, description: string, title: string, icon: { __typename?: 'UploadFile', url: string, alternativeText: string | null } } | null> | null } | null, faq: { __typename?: 'ComponentWidgetsFaq', title: { __typename?: 'ComponentSharedColorizedText', colored: string | null, text: string | null } | null, faqItems_connection: { __typename?: 'FaqItemRelationResponseCollection', nodes: Array<{ __typename?: 'FaqItem', question: string, answer: string, documentId: string }> } | null } | null } | null, reviews_connection: { __typename?: 'ReviewEntityResponseCollection', nodes: Array<{ __typename?: 'Review', age: number | null, documentId: string, name: string, order: number, showOnMainPage: boolean | null, text: string | null, reviewsTags_connection: { __typename?: 'ReviewsTagRelationResponseCollection', nodes: Array<{ __typename?: 'ReviewsTag', documentId: string, text: string, value: string }> } | null }> } | null };

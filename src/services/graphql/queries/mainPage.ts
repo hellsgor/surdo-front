@@ -102,23 +102,6 @@ const mainPageQuery = /* GraphQL */ `
           leftText
           rightText
         }
-        items_connection {
-          nodes {
-            age
-            documentId
-            name
-            order
-            showOnMainPage
-            text
-            reviewsTags_connection {
-              nodes {
-                documentId
-                text
-                value
-              }
-            }
-          }
-        }
       }
       classesFormat {
         title {
@@ -145,6 +128,26 @@ const mainPageQuery = /* GraphQL */ `
             question
             answer
             documentId
+          }
+        }
+      }
+    }
+    reviews_connection(
+      filters: { showOnMainPage: { eq: true } }
+      sort: "order:asc"
+    ) {
+      nodes {
+        age
+        documentId
+        name
+        order
+        showOnMainPage
+        text
+        reviewsTags_connection {
+          nodes {
+            documentId
+            text
+            value
           }
         }
       }

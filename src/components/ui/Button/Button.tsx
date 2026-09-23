@@ -13,7 +13,9 @@ type Base = {
     | 'neutral'
     | 'ghost'
     | 'ghost-white'
-    | 'ghost-orange';
+    | 'ghost-orange'
+    | 'chip';
+  shape?: 'pill' | 'round';
   size?: 'md' | 'sm';
   wide?: boolean;
   children: React.ReactNode;
@@ -36,6 +38,7 @@ type Props = AsButton | AsLink;
 
 export function Button({
   variant = 'primary',
+  shape,
   size = 'md',
   wide,
   children,
@@ -48,6 +51,7 @@ export function Button({
     styles.button,
     styles[variant],
     styles[size],
+    shape === 'round' && styles.round,
     wide && styles.wide,
     className,
   );

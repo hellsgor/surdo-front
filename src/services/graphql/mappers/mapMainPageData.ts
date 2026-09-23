@@ -1,15 +1,45 @@
 import type { MainPage } from '@/types/MainPage';
+import type { Review } from '@/types/components/Review';
 
 import type { MainPageQuery } from '../generated/graphql';
 import { mapIcon } from './mapIcon';
 import { mapImage } from './mapImage';
 
 export type MainPageRaw = NonNullable<MainPageQuery['homePage']>;
+export type ReviewsRaw = NonNullable<
+  MainPageQuery['reviews_connection']
+>['nodes'];
 
 const EMPTY_COLORED_TEXT = { text: null, colored: null };
 const EMPTY_LINK = { label: '', href: '#', leftText: null, rightText: null };
 
-export function mapMainPageData(raw: MainPageRaw): MainPage {
+function mapReviews(nodes: ReviewsRaw): Review[] {
+  return nodes.flatMap((item) =>
+    item
+      ? [
+          {
+            id: item.documentId,
+            name: item.name,
+            age: item.age ?? null,
+            showOnMainPage: item.showOnMainPage ?? null,
+            text: item.text ?? null,
+            order: item.order,
+            tags:
+              item.reviewsTags_connection?.nodes.map((tag) => ({
+                id: tag.documentId,
+                text: tag.text,
+                value: tag.value,
+              })) ?? [],
+          },
+        ]
+      : [],
+  );
+}
+
+export function mapMainPageData(
+  raw: MainPageRaw,
+  reviewsRaw: ReviewsRaw,
+): MainPage {
   return {
     hero: {
       title: raw.hero?.title ?? EMPTY_COLORED_TEXT,
@@ -54,21 +84,7 @@ export function mapMainPageData(raw: MainPageRaw): MainPage {
     reviews: {
       title: raw.reviews?.title ?? EMPTY_COLORED_TEXT,
       profi: raw.reviews?.profi ?? EMPTY_LINK,
-      items:
-        raw.reviews?.items_connection?.nodes.map((item) => ({
-          id: item.documentId,
-          name: item.name,
-          age: item.age ?? null,
-          showOnMainPage: item.showOnMainPage ?? null,
-          text: item.text ?? null,
-          order: item.order,
-          tags:
-            item.reviewsTags_connection?.nodes.map((tag) => ({
-              id: tag.documentId,
-              text: tag.text,
-              value: tag.value,
-            })) ?? [],
-        })) ?? [],
+      items: mapReviews(reviewsRaw),
     },
     classesFormat: {
       title: raw.classesFormat?.title ?? EMPTY_COLORED_TEXT,

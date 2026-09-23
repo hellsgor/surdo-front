@@ -1,5 +1,5 @@
-import type { Dimple } from '@/types/components/Dimple';
 import type { MainPage } from '@/types/MainPage';
+import type { Dimple } from '@/types/components/Dimple';
 
 import { client } from '../client';
 import type { MainPageQuery } from '../generated/graphql';
@@ -15,8 +15,9 @@ export async function getMainPageData(): Promise<{
   const dimples = (data.dimples_connection?.nodes ?? [])
     .map(mapDimple)
     .sort((a, b) => a.sort - b.sort);
+  const reviews = data.reviews_connection?.nodes ?? [];
   return {
-    homePage: mapMainPageData(data.homePage as MainPageRaw),
+    homePage: mapMainPageData(data.homePage as MainPageRaw, reviews),
     dimples,
   };
 }

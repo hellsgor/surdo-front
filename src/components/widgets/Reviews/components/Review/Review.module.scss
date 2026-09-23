@@ -1,0 +1,63 @@
+@use '../../../../../scss/functions' as *;
+@use '../../../../../scss/mixins' as *;
+
+.review {
+  isolation: isolate;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @include fluid(row-gap, 16);
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+
+    background-image: url('/review/quote.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @include fluid(width, 143, 72, 110);
+    @include fluid(height, 108, 54, 84);
+  }
+}
+
+.name {
+  color: var(--orange-500);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  @include fluid(row-gap, 4);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  @include fluid(column-gap, 10);
+  @include fluid(row-gap, 6);
+}
+
+.clamped {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+
+  @include tab-only {
+    -webkit-line-clamp: 8;
+  }
+
+  @include m-only {
+    -webkit-line-clamp: 16;
+  }
+}
+
+.readMore {
+  align-self: flex-start;
+}
