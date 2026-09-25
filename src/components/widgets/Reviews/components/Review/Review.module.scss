@@ -36,6 +36,15 @@
   @include fluid(row-gap, 4);
 }
 
+.title {
+  // Глобальный h5 (typography.scss) сжимается вместе с root font-size без
+  // нижней границы — на tablet (768–1439) это даёт нечитаемо мелкий текст,
+  // см. тот же фикс в FormatItem.module.scss
+  @include tab-only {
+    font-size: clamp(18px, tvw(24px), 24px);
+  }
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;

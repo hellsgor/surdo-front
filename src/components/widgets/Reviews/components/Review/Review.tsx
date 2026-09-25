@@ -52,7 +52,7 @@ export function Review({
   return (
     <div className={clsx(styles.review, className)}>
       <header className={styles.header}>
-        <h5>
+        <h5 className={styles.title}>
           <span className={styles.name}>{name}</span>
           {age !== null && `, ${pluralize(age, 'год', 'года', 'лет')}`}
         </h5>

@@ -3,6 +3,18 @@
 
 .carousel {
   position: relative;
+
+  // .pagination спозиционирована absolute и не занимает места в потоке (см. её
+  // комментарий) — без запаса следующая секция наезжает на точки. На desktop
+  // (≥1440) padding-bottom секции сам по себе даёт достаточный зазор, а на
+  // tablet/mobile его едва хватает (или не хватает совсем) — добавляем явный
+  @include tab-only {
+    margin-bottom: rem(16);
+  }
+
+  @include m-only {
+    margin-bottom: rem(32);
+  }
 }
 
 .reviewsCarousel {
