@@ -7,7 +7,7 @@
   @return math.div($val, $val * 0 + 1);
 }
 
-@function vw($values, $viewport-base, $to-rem: false) {
+@function vw($values, $viewport-base) {
   @if meta.type-of($values) == 'list' {
     $result: ();
     @each $value in $values {

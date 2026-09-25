@@ -33,7 +33,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  @include fluid(row-gap, 16, 40, 16);
+  @include fluid(row-gap, 16, 40);
 }
 
 .advantages {

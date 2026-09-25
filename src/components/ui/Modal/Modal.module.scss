@@ -21,7 +21,7 @@
   z-index: 100;
   inset: 0;
 
-  overflow-y: auto;
+  overflow: hidden;
   display: grid;
   place-items: center;
 
@@ -38,7 +38,7 @@
   }
 
   @include m-only {
-    padding: mvw(20px) mvw(16px);
+    padding: rem(20px) rem(16px);
   }
 }
 
@@ -50,7 +50,7 @@
 
   width: 100%;
   max-width: rem(640px);
-  max-height: 90dvh;
+  max-height: calc(100dvh - #{rem(80px)});
   border-radius: rem(24px);
 
   background: var(--white);
@@ -60,7 +60,8 @@
   }
 
   @include m-only {
-    border-radius: mvw(16px);
+    max-height: calc(100dvh - #{rem(40px)});
+    border-radius: rem(16px);
   }
 }
 
@@ -71,8 +72,8 @@
   border-radius: rem(24px);
 
   @include m-only {
-    padding: mvw(24px);
-    border-radius: mvw(16px);
+    padding: rem(24px);
+    border-radius: rem(16px);
   }
 }
 

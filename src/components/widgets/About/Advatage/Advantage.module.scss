@@ -38,7 +38,7 @@
   flex-direction: column;
   @include fluid(padding-top, 168, 104, 112);
   @include fluid(padding-inline, 32, 32, 16);
-  @include fluid(padding-bottom, 32, 32, 32);
+  @include fluid(padding-bottom, 32);
 }
 
 .value {

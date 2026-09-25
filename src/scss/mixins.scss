@@ -55,14 +55,16 @@
   }
 }
 
-@mixin fluid($property, $desk, $mob: $desk, $tab: $desk) {
+@mixin fluid($property, $desk, $mob: $desk, $tab: null) {
   #{$property}: rem($desk);
 
-  @include tab-only {
-    #{$property}: tvw($tab);
+  @if $tab {
+    @include tab-only {
+      #{$property}: tvw($tab);
+    }
   }
 
   @include m-only {
-    #{$property}: mvw($mob);
+    #{$property}: rem($mob);
   }
 }

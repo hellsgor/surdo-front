@@ -48,13 +48,9 @@
   right: calc(-1 * var(--hit-extend, 0px));
   width: calc(#{rem(56)} + #{rem(16)} + var(--hit-extend, 0px));
 
-  @include tab-only {
-    width: calc(#{tvw(56)} + #{tvw(16)} + var(--hit-extend, 0px));
-  }
-
   @include m-only {
     top: 50%;
-    right: mvw(16);
+    right: rem(16);
     bottom: auto;
     left: auto;
     transform: translateY(-50%);

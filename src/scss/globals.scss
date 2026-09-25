@@ -16,15 +16,28 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+
+  overflow-x: hidden;
+
   height: 100%;
+
+  font-size: 16px;
 
   @include bp-from(v.$br-desk-max) {
     font-size: dvw-lg(16px);
   }
+
+  @include bp-till(v.$br-desk) {
+    font-size: dvw(16px);
+  }
+
+  @include m-only {
+    font-size: mvw(16px);
+  }
 }
 
 body {
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
 

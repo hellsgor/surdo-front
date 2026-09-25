@@ -24,14 +24,6 @@
     color v.$transition-timing,
     border-color v.$transition-timing;
 
-  @include tab-only {
-    gap: tvw(4px);
-  }
-
-  @include m-only {
-    gap: mvw(4px);
-  }
-
   &:disabled {
     pointer-events: none;
     cursor: not-allowed;
@@ -51,14 +43,6 @@
   padding: rem(14px) rem(24px);
   border: rem(2px) solid transparent;
   border-radius: 9999px;
-
-  @include tab-only {
-    padding: tvw(14px) tvw(24px);
-  }
-
-  @include m-only {
-    padding: mvw(14px) mvw(24px);
-  }
 }
 
 .sm {
@@ -66,14 +50,6 @@
   &.secondary,
   &.neutral {
     padding: rem(8px) rem(16px);
-
-    @include tab-only {
-      padding: tvw(8px) tvw(16px);
-    }
-
-    @include m-only {
-      padding: mvw(8px) mvw(16px);
-    }
   }
 }
 

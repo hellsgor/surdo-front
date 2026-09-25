@@ -8,7 +8,7 @@ body {
   line-height: 1.55;
 
   @include tab-only {
-    font-size: clamp(rem(16px), tvw(18px), rem(18px));
+    font-size: clamp(16px, tvw(18px), 18px);
   }
 
   @include m-only {
@@ -80,22 +80,22 @@ ul[role='marked'] {
 
   li {
     position: relative;
-    @include fluid(padding-left, 8px);
+    padding-left: 0.444em;
 
     &::before {
       content: '';
 
       position: absolute;
+      top: 0.722em;
       left: 0;
 
       display: block;
 
       aspect-ratio: 1/1;
+      width: 0.222em;
       border-radius: 50%;
 
       background-color: var(--orange-500);
-      @include fluid(top, 13px);
-      @include fluid(width, 4px);
     }
   }
 }

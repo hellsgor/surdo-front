@@ -4,9 +4,9 @@
 
 .banner {
   position: fixed;
+  z-index: 100;
   right: rem(40px);
   bottom: rem(40px);
-  z-index: 100;
 
   width: rem(400px);
   padding: rem(40px);
@@ -18,33 +18,21 @@
   @include tab-only {
     right: tvw(20px);
     bottom: tvw(20px);
-
-    width: tvw(400px);
-    padding: tvw(40px);
-    border-radius: tvw(24px);
   }
 
   @include m-only {
-    right: mvw(16px);
-    bottom: mvw(16px);
-    left: mvw(16px);
+    right: rem(16px);
+    bottom: rem(16px);
+    left: rem(16px);
 
     width: auto;
-    padding: mvw(24px);
-    border-radius: mvw(16px);
+    padding: rem(24px);
+    border-radius: rem(16px);
   }
 }
 
 .text {
   margin-bottom: rem(16px);
-
-  @include tab-only {
-    margin-bottom: tvw(16px);
-  }
-
-  @include m-only {
-    margin-bottom: mvw(16px);
-  }
 }
 
 .button {

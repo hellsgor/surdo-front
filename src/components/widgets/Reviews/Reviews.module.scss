@@ -1,6 +1,11 @@
 @use '../../../scss/mixins' as *;
 @use '../../../scss/functions' as *;
 
+.section {
+  overflow: visible;
+  overflow-x: clip;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -14,7 +19,7 @@
 
   @include m-only {
     flex-direction: column;
-    row-gap: mvw(12);
+    row-gap: rem(12);
     align-items: flex-start;
   }
 }
@@ -25,6 +30,6 @@
   // На мобиле кнопка «следующий» лежит поверх правого края слайда,
   // паддинг держит контент отзыва вне её зоны.
   @include m-only {
-    padding-right: mvw(56);
+    padding-right: rem(56);
   }
 }

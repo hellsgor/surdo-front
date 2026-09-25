@@ -4,7 +4,6 @@
 
 .section {
   @include bp-till(v.$br-desk) {
-    padding-top: 0;
     padding-bottom: tvw(150);
   }
 
@@ -12,7 +11,8 @@
     padding-bottom: tvw(80);
   }
 
-  @include bp-till(v.$br-tab) {
+  @include m-only {
+    padding-top: 0;
     padding-bottom: mvw(40);
   }
 }
@@ -27,7 +27,7 @@
   }
 
   @include m-only {
-    row-gap: mvw(24);
+    row-gap: rem(24);
   }
 }
 
@@ -41,15 +41,13 @@
 
 .content {
   position: sticky;
-  top: rem(160);
-
   display: flex;
   flex-direction: column;
   row-gap: rem(40);
   @include fluid(top, 160);
 
   @include m-only {
-    row-gap: mvw(24);
+    row-gap: rem(24);
   }
 
   & > h2 {
@@ -116,7 +114,7 @@
 
   @include m-only {
     grid-template-columns: 1fr;
-    row-gap: mvw(12);
+    row-gap: rem(12);
 
     & > *:nth-child(odd),
     & > *:nth-child(even) {

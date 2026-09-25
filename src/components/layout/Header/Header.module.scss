@@ -32,13 +32,9 @@
   top: 0;
   transform: translateY(0);
 
-  height: rem(64px);
+  height: 64px;
 
   transition: transform v.$transition-timing;
-
-  @include tab-only {
-    height: tvw(64px);
-  }
 }
 
 .hidden {
@@ -62,14 +58,8 @@
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
 
-  @include tab-only {
-    gap: tvw(24px);
-    border-bottom-right-radius: tvw(14px);
-    border-bottom-left-radius: tvw(14px);
-  }
-
   @include m-only {
-    gap: mvw(16px);
+    gap: rem(16px);
 
     border-radius: 0;
 
@@ -87,7 +77,7 @@
   align-items: center;
 
   @include m-only {
-    padding: mvw(8px);
+    padding: rem(8px);
   }
 }
 
@@ -128,10 +118,6 @@
   &[aria-disabled='true'] {
     pointer-events: none;
     opacity: 0.5;
-  }
-
-  @include tab-only {
-    padding: tvw(8px) tvw(12px);
   }
 }
 

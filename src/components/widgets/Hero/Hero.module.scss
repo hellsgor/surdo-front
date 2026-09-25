@@ -6,7 +6,7 @@
   overflow: visible;
   overflow-x: clip;
   height: 100vh;
-  min-height: dvw(900);
+  min-height: rem(900px);
   @include fluid(padding-top, 342px, 198px, 198px);
 
   @include tab-only {
@@ -19,7 +19,7 @@
     align-items: flex-end;
 
     height: auto;
-    min-height: calc(100vh - mvw(64));
+    min-height: calc(100vh - 64px);
     padding-top: inherit;
   }
 }
@@ -61,13 +61,9 @@
 .column {
   display: flex;
   flex-direction: column;
-  @include fluid(max-width, 680px);
+  @include fluid(max-width, 510px);
   @include fluid(row-gap, 40px);
   @include fluid(padding-bottom, 160px, 80px);
-
-  @include m-only {
-    max-width: 100%;
-  }
 }
 
 .photoWrapper {
@@ -122,10 +118,5 @@ img.photo {
 
   @include tab-only {
     top: tvw(-109px);
-    clip-path: inset(0 0 calc(100% - tvw(300px)) 0);
-  }
-
-  @include m-only {
-    clip-path: inset(0 0 calc(100% - mvw(300px)) 0);
   }
 }
