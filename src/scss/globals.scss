@@ -29,7 +29,11 @@ html {
   }
 
   @include bp-till(v.$br-desk) {
-    font-size: dvw(16px);
+    // Без нижней границы dvw(16px) даёт на нижней границе tablet (768px)
+    // всего ~8.5px root font-size — вдвое меньше десктопа. Из-за этого
+    // мелкие UI-элементы без своего tab-only override (иконки, кнопки,
+    // буллиты пагинации, чипы тегов) становились нечитаемо мелкими
+    font-size: clamp(13px, dvw(16px), 16px);
   }
 
   @include m-only {
