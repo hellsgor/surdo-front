@@ -13,6 +13,10 @@
   justify-content: space-between;
   padding-block: rem(8px);
 
+  @include tab-only {
+    gap: rem(20px);
+  }
+
   @include m-only {
     flex-direction: column;
     align-items: center;

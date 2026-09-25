@@ -142,9 +142,10 @@
   width: rem(512px);
 
   @include tab-only {
-    right: calc(50% - tvw(450px));
-    width: auto;
-    height: calc(100% - rem(8px));
+    right: calc(50% - tvw(560px));
+    width: tvw(420px);
+    height: auto;
+    max-height: calc(100% - rem(8px));
   }
 
   @include m-only {
