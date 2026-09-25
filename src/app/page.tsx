@@ -1,4 +1,5 @@
 import { About } from '@/components/widgets/About/About';
+import { Format } from '@/components/widgets/Format/Format';
 import { Hero } from '@/components/widgets/Hero/Hero';
 import { Reviews } from '@/components/widgets/Reviews/Reviews';
 import { Tasks } from '@/components/widgets/Tasks/Tasks';
@@ -13,6 +14,7 @@ export default async function Home() {
       <Tasks data={homePage.tasks} />
       <About data={homePage.about} dimples={dimples} />
       <Reviews data={homePage.reviews} />
+      <Format data={homePage.classesFormat} />
     </>
   );
 }

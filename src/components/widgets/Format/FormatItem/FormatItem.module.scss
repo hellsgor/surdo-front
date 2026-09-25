@@ -1,0 +1,38 @@
+@use '../../../../scss/functions' as *;
+@use '../../../../scss/mixins' as *;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(12);
+  padding-inline: rem(8);
+}
+
+.header {
+  display: flex;
+  column-gap: rem(16);
+  align-items: center;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: rem(32);
+  height: rem(32);
+}
+
+.title {
+  font-size: rem(24px);
+  color: var(--accent);
+
+  @include tab-only {
+    font-size: clamp(20px, tvw(24px), 24px);
+  }
+
+  @include m-only {
+    font-size: rem(20px);
+  }
+}
+
+.description {
+  color: var(--foreground);
+}
