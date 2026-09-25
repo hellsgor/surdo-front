@@ -41,6 +41,7 @@ export function Hero({ data }: Props) {
               alt={data.image.alt ?? ''}
               width={552}
               height={829}
+              loading="eager"
             />
             <div className={styles.circle}>
               <Image
@@ -49,6 +50,7 @@ export function Hero({ data }: Props) {
                 alt={data.image.alt ?? ''}
                 width={552}
                 height={829}
+                loading="eager"
               />
             </div>
           </div>
