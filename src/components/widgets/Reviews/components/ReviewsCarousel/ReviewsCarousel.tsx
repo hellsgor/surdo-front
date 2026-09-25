@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useRef, useState } from 'react';
 
 import { usePathname } from 'next/navigation';
@@ -18,8 +19,13 @@ import type { Review as ReviewType } from '@/types/components/Review';
 import { Review } from '../Review/Review';
 import styles from './ReviewsCarousel.module.scss';
 
+type Item = {
+  review: ReviewType;
+  content: ReactNode;
+};
+
 type Props = {
-  items: ReviewType[];
+  items: Item[];
   className?: string;
   reviewClassName?: string;
 };
@@ -27,8 +33,10 @@ type Props = {
 export function ReviewsCarousel({ items, className, reviewClassName }: Props) {
   const pathname = usePathname();
   const visibleItems = (
-    pathname === '/' ? items.filter((item) => item.showOnMainPage) : items
-  ).toSorted((a, b) => a.order - b.order);
+    pathname === '/'
+      ? items.filter(({ review }) => review.showOnMainPage)
+      : items
+  ).toSorted((a, b) => a.review.order - b.review.order);
 
   const swiperRef = useRef<SwiperType | null>(null);
   // useState, а не useRef: swiper-react подхватывает el для кастомной пагинации только при
@@ -65,9 +73,13 @@ export function ReviewsCarousel({ items, className, reviewClassName }: Props) {
           swiperRef.current = s;
         }}
       >
-        {visibleItems.map((item) => (
-          <SwiperSlide key={item.id}>
-            <Review review={item} className={reviewClassName} />
+        {visibleItems.map(({ review, content }) => (
+          <SwiperSlide key={review.id}>
+            <Review
+              review={review}
+              content={content}
+              className={reviewClassName}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

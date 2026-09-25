@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 import clsx from 'clsx';
@@ -13,13 +14,19 @@ import styles from './Review.module.scss';
 type Props = {
   className?: string;
   review: Review;
+  content: ReactNode;
   expanded?: boolean;
 };
 
-export function Review({ className, review, expanded = false }: Props) {
-  const { name, age, text, tags } = review;
+export function Review({
+  className,
+  review,
+  content,
+  expanded = false,
+}: Props) {
+  const { name, age, tags } = review;
   const { openModal } = useModal();
-  const textRef = useRef<HTMLParagraphElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);
 
   useEffect(() => {
@@ -57,15 +64,20 @@ export function Review({ className, review, expanded = false }: Props) {
           ))}
         </div>
       </header>
-      <p ref={textRef} className={clsx(!expanded && styles.clamped)}>
-        {text}
-      </p>
+      {content && (
+        <div ref={textRef} className={clsx(!expanded && styles.clamped)}>
+          {content}
+        </div>
+      )}
       {!expanded && isTruncated && (
         <Button
           variant="ghost-orange"
           className={styles.readMore}
           onClick={() =>
-            openModal(<Review review={review} expanded />, `Отзыв: ${name}`)
+            openModal(
+              <Review review={review} content={content} expanded />,
+              `Отзыв: ${name}`,
+            )
           }
         >
           Читать полностью

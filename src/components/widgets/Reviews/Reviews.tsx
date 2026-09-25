@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { Button, Section } from '@/components/ui';
+import { Button, RichText, Section } from '@/components/ui';
 import type { Reviews } from '@/types/widgets/Reviews';
 import { pretty } from '@/utils/typography';
 
@@ -13,6 +13,13 @@ type Props = {
 };
 
 export function Reviews({ data: { title, profi, items }, className }: Props) {
+  // markdown рендерится здесь, на сервере: react-markdown не должен попадать
+  // в клиентский бандл ReviewsCarousel/Review
+  const preparedItems = items.map((review) => ({
+    review,
+    content: review.text ? <RichText>{review.text}</RichText> : null,
+  }));
+
   return (
     <Section sectionName="reviews" className={clsx(styles.section, className)}>
       <div className={styles.wrapper}>
@@ -22,7 +29,10 @@ export function Reviews({ data: { title, profi, items }, className }: Props) {
             {profi.label}
           </Button>
         </header>
-        <ReviewsCarousel items={items} reviewClassName={styles.review} />
+        <ReviewsCarousel
+          items={preparedItems}
+          reviewClassName={styles.review}
+        />
       </div>
     </Section>
   );
