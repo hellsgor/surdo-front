@@ -58,6 +58,7 @@ export function ReviewsCarousel({ items, className, reviewClassName }: Props) {
         slidesPerView="auto"
         loop={canLoop}
         rewind={!canLoop}
+        grabCursor
         // Свой контейнер для точек: дефолтный рендерится внутри .swiper, а он растянут за
         // край экрана (чтобы Swiper правильно посчитал видимые слайды) — точки центрировались
         // бы по этой растянутой ширине, а не по видимой колонке карточек
