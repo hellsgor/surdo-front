@@ -20,6 +20,7 @@ export function Hero({ data }: Props) {
         alt="background image"
         width="1982"
         height="930"
+        loading="eager"
       />
 
       <div className={styles.wrapper}>
