@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import Markdown from 'react-markdown';
 
+import { nobr } from '@/utils/typography';
+
 import styles from './RichText.module.scss';
 
 type Props = {
@@ -11,7 +13,7 @@ type Props = {
 export function RichText({ children, className }: Props) {
   return (
     <div className={clsx(styles.richText, className)}>
-      <Markdown>{children}</Markdown>
+      <Markdown>{nobr(children)}</Markdown>
     </div>
   );
 }

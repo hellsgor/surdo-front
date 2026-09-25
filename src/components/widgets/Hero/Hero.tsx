@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { Button } from '@/components/ui';
 import { Section } from '@/components/ui/Section/Section';
 import type { Hero } from '@/types/widgets/Hero';
-import { pretty } from '@/utils/typography';
+import { nobr, pretty } from '@/utils/typography';
 
 import styles from './Hero.module.scss';
 
@@ -27,7 +27,7 @@ export function Hero({ data }: Props) {
           <h1>{pretty(data.title)}</h1>
           <ul role="marked">
             {data.bullets.map((b) => (
-              <li key={b.id}>{b.text}</li>
+              <li key={b.id}>{nobr(b.text ?? '')}</li>
             ))}
           </ul>
           <Button {...data.primaryButton}>{data.primaryButton.label}</Button>
